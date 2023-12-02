@@ -1,0 +1,31 @@
+/* UserProfiles.css */
+
+.userProfilesContainer {
+  margin: 20px;
+}
+
+.userProfilesTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.userProfilesTable th,
+.userProfilesTable td {
+  border: 1px solid #17529a;
+  padding: 8px;
+  text-align: left;
+}
+
+.userProfilesTable th {
+  background-color: #f2f2f2;
+}
+.userProfilesTable tbody tr:hover {
+  background-color: #efe5e5;
+}
+
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
