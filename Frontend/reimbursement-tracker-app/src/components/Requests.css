@@ -1,0 +1,37 @@
+/* Requests.css */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #17529a;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  tbody tr:hover {
+    background-color: #efe5e5;
+  }
+  .btn-secondary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-small {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  
+  .btn:hover {
+    opacity: 0.8;
+  }
