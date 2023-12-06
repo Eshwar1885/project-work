@@ -1,30 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-const GetPaymentDetails = () => {
+const GetPayments = () => {
+  // State variables
   const [paymentData, setPaymentData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Function to fetch payment details
   const fetchPaymentDetails = async () => {
     try {
       setLoading(true);
       setError(null);
 
+      // API request to get payment details
       const response = await axios.get('https://localhost:7007/api/PaymentDetails');
-      setPaymentData(response.data);
+      console.log('Response:', response.data);
+
+      // Check if the response has a 'data' property
+      if (response && response.data) {
+        setPaymentData(response.data);
+      } else {
+        setError('Invalid response format');
+      }
     } catch (error) {
-      console.error('Error fetching payment details:', error.response.data);
+      // Handle errors during the API request
+      console.error('Error fetching payment details:', error.response ? error.response.data : error.message);
       setError('Failed to fetch payment details. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => {
-    fetchPaymentDetails();
-  }, []); // Empty dependency array ensures the effect runs only once on mount
-
+  // JSX for rendering the component
   return (
     <div>
       <h2>Payment Details</h2>
@@ -37,21 +45,34 @@ const GetPaymentDetails = () => {
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      <ul>
-        {paymentData.map((payment) => (
-          <li key={payment.PaymentId }>
-            <p>Payment ID: {payment.PaymentId}</p>
-            <p>Request ID: {payment.RequestId}</p>
-            <p>Card Number: {payment.CardNumber}</p>
-            <p>Expiry Date: {payment.ExpiryDate}</p>
-            <p>CVV: {payment.CVV}</p>
-            <p>Payment Amount: {payment.PaymentAmount}</p>
-            <p>Payment Date: {payment.PaymentDate}</p>
-          </li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Payment ID</th>
+            <th>Request ID</th>
+            <th>Card Number</th>
+            <th>Expiry Date</th>
+            <th>CVV</th>
+            <th>Payment Amount</th>
+            <th>Payment Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {paymentData.map((payment) => (
+            <tr key={payment.paymentId}>
+              <td>{payment.paymentId}</td>
+              <td>{payment.requestId}</td>
+              <td>{payment.cardNumber}</td>
+              <td>{payment.expiryDate}</td>
+              <td>{payment.cvv}</td>
+              <td>{payment.paymentAmount}</td>
+              <td>{payment.paymentDate}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default GetPaymentDetails;
+export default GetPayments;

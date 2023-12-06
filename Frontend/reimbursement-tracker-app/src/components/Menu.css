@@ -50,7 +50,7 @@
   text-decoration: underline;
 }
 
-
+/*profile*/
 /* Menu.css */
 
 .profile-dropdown {
@@ -61,7 +61,7 @@
 .profile-dropdown .nav-link {
   cursor: pointer;
   padding: 15px;
-  color: #333;
+  color: #ffffff;
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
@@ -72,7 +72,7 @@
   display: none;
   position: absolute;
   background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(255, 0, 0, 0.1);
   z-index: 1;
   border-radius: 8px;
   overflow: hidden;
@@ -91,7 +91,7 @@
 .profile-dropdown .dropdown-content .nav-link {
   display: block;
   padding: 15px;
-  color: #333;
+  color: greenyellow;
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -104,4 +104,60 @@
 .active-link,
 .profile-dropdown:hover .nav-link {
   color: #0066cc;
+}
+
+/* AddPayment.css */
+/* Menu.css */
+
+.payment-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.payment-dropdown .nav-link {
+  cursor: pointer;
+  padding: 15px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.payment-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 128, 0, 0.1);
+  z-index: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 200px;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.payment-dropdown:hover .dropdown-content {
+  display: block;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.payment-dropdown .dropdown-content .nav-link {
+  display: block;
+  padding: 15px;
+  color: #4caf50;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.payment-dropdown .dropdown-content .nav-link:hover {
+  background-color: #f0f0f0;
+  color: rgb(47, 47, 255);
+}
+
+.active-link,
+.payment-dropdown:hover .nav-link {
+  color: blue;
 }

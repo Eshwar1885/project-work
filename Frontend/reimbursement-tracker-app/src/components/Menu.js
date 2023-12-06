@@ -5,9 +5,18 @@ import './Menu.css'; // Import the CSS file
 function Menu() {
   const location = useLocation();
   const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const [isPaymentDropdownOpen, setPaymentDropdownOpen] = useState(false);
 
   const toggleProfileDropdown = () => {
     setProfileDropdownOpen(!isProfileDropdownOpen);
+    // Close the payment dropdown when profile dropdown is opened
+    setPaymentDropdownOpen(false);
+  };
+
+  const togglePaymentDropdown = () => {
+    setPaymentDropdownOpen(!isPaymentDropdownOpen);
+    // Close the profile dropdown when payment dropdown is opened
+    setProfileDropdownOpen(false);
   };
 
   return (
@@ -56,6 +65,32 @@ function Menu() {
             )}
           </div>
 
+          {/* Payment Dropdown */}
+          <div className="payment-dropdown">
+            <div
+              className={`nav-link ${isPaymentDropdownOpen ? 'active-link' : ''}`}
+              onClick={togglePaymentDropdown}
+            >
+              Payments
+            </div>
+            {isPaymentDropdownOpen && (
+              <div className="dropdown-content">
+                <NavLink
+                  to="/AddPayment"
+                  className={`nav-link ${location.pathname === '/AddPayment' ? 'active-link' : ''}`}
+                >
+                  Make Payment
+                </NavLink>
+                <NavLink
+                  to="/GetPayments"
+                  className={`nav-link ${location.pathname === '/GetPayments' ? 'active-link' : ''}`}
+                >
+                  View Payments
+                </NavLink>
+              </div>
+            )}
+          </div>
+
           <NavLink
             to="/add-request"
             className={`nav-link ${location.pathname === '/add-request' ? 'active-link' : ''}`}
@@ -64,18 +99,6 @@ function Menu() {
           </NavLink>
           <NavLink to="/requests" className={`nav-link ${location.pathname === '/requests' ? 'active-link' : ''}`}>
             Requests
-          </NavLink>
-          <NavLink
-            to="/AddPayment"
-            className={`nav-link ${location.pathname === '/AddPayment' ? 'active-link' : ''}`}
-          >
-            Add Payment
-          </NavLink>
-          <NavLink
-            to="/GetPayments"
-            className={`nav-link ${location.pathname === '/GetPayments' ? 'active-link' : ''}`}
-          >
-            View Payments
           </NavLink>
         </div>
       </div>
