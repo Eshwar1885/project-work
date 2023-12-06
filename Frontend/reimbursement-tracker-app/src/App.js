@@ -10,6 +10,7 @@ import AddRequest from './components/AddRequest';
 import Requests from './components/Requests';
 import GetPayments from './components/GetPayments';
 import AddPayment from './components/AddPayments';
+import UserRequests from './components/UpdateRequests';
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
           <Route path="/requests" element={<Requests/>} />
           <Route path="/AddPayment" element={<AddPayment/>}/>
           <Route path="/GetPayments" element={<GetPayments/>}/>
+          <Route path="/user-requests" element={<UserRequests/>}/>
+
         </Routes>
       </BrowserRouter>
     </div>

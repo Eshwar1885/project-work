@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import UpdateTracking from './UpdateTracking';
 import './Requests.css';
+import Button from 'react-bootstrap/Button';
 
 const ViewTracking = ({ trackingDetails, onClose }) => {
   return (
@@ -108,16 +109,15 @@ const Requests = () => {
               <td>{request.description}</td>
               <td>{new Date(request.requestDate).toLocaleString()}</td>
               <td>
-                <button
+                <Button
                   onClick={() => {
                     setSelectedRequest(request);
                     handleViewTrackingClick(request.requestId);
                   }}
-                  className="btn btn-secondary btn-small"
-                >
+                  Button variant="primary">
                   View Tracking
-                </button>
-                <button
+                </Button>
+                <Button
                   onClick={() => {
                     setSelectedRequest(request);
                     handleUpdateTrackingClick(request.requestId);
@@ -125,7 +125,7 @@ const Requests = () => {
                   className="btn btn-secondary btn-small"
                 >
                   Update Tracking
-                </button>
+                </Button>
               </td>
             </tr>
           ))}

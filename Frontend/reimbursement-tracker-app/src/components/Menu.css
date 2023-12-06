@@ -147,7 +147,7 @@
 .payment-dropdown .dropdown-content .nav-link {
   display: block;
   padding: 15px;
-  color: #4caf50;
+  color: blue;
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -157,7 +157,7 @@
   color: rgb(47, 47, 255);
 }
 
-.active-link,
+.active-link
 .payment-dropdown:hover .nav-link {
   color: blue;
 }

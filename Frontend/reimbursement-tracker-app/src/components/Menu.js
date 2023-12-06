@@ -100,6 +100,11 @@ function Menu() {
           <NavLink to="/requests" className={`nav-link ${location.pathname === '/requests' ? 'active-link' : ''}`}>
             Requests
           </NavLink>
+          <NavLink
+            to="/user-requests"
+            className={`nav-link ${location.pathname === '/user-requests' ? 'active-link' : ''}`}>
+            User Requests
+          </NavLink>
         </div>
       </div>
     </div>
