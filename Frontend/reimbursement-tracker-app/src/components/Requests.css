@@ -15,12 +15,15 @@ table {
   th {
     background-color: #f2f2f2;
   }
+
+  .modal-content{
+background: transparent;
+  }
   tbody tr:hover {
     background-color: #efe5e5;
   }
   .btn-secondary {
     background-color: #007bff;
-    color: #fff;
     border: none;
     padding: 8px 16px;
     margin-right: 5px;

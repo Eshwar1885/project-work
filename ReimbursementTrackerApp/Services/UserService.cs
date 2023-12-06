@@ -42,16 +42,11 @@ namespace ReimbursementTrackerApp.Services
                     if (user.Password[i] != userpass[i])
                         return null;
                 }
-
+                userDTO.Role = user.Role;
                 userDTO.Token = _tokenService.GetToken(userDTO);
                 userDTO.Password = "";
 
-                // Check if the roles match
-                if (user.Role != userDTO.Role)
-                {
-                    // If the roles don't match, return null or handle it as needed
-                    return null;
-                }
+
 
                 return userDTO;
             }

@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './AddRequest.css'; // Import the CSS file
 
 const AddRequest = () => {
-    const initialState = {
-    username: '',
+  const initialState = {
     expenseCategory: 'Select Category',
     amount: 0,
     document: '',
@@ -15,6 +14,13 @@ const AddRequest = () => {
     showPolicies: false,
   };
   const [requestData, setRequestData] = useState({ ...initialState})
+
+  useEffect(() => {
+    // Retrieve username from local storage
+    const username = localStorage.getItem('username');
+    // Set the username in the requestData state
+    setRequestData((prevRequestData) => ({ ...prevRequestData, username }));
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -62,21 +68,17 @@ const AddRequest = () => {
     <div className="addRequestContainer">
       <h2>Add Request</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input type="text" name="username" value={requestData.username} onChange={handleInputChange} />
-        </label>
 
         <label>
           Expense Category:
           <select name="expenseCategory" value={requestData.expenseCategory} onChange={handleInputChange}>
             <option value="">Select Category</option>
-            <option value="travel">Travel</option>
-            <option value="meals">Meals</option>
-            <option value="supplies">Supplies</option>
-            <option value="training">Training</option>
-            <option value="health">Health</option>
-            <option value="other">Other</option>
+            <option value="Travel">Travel</option>
+            <option value="Meals">Meals</option>
+            <option value="Supplies">Supplies</option>
+            <option value="Training">Training</option>
+            <option value="Health">Health</option>
+            <option value="other">Other</option>ss
           </select>
         </label>
         {requestData.expenseCategory === 'other' && (

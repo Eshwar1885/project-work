@@ -11,6 +11,7 @@ import Requests from './components/Requests';
 import GetPayments from './components/GetPayments';
 import AddPayment from './components/AddPayments';
 import UserRequests from './components/UpdateRequests';
+import './App.css';
 
 function App() {
   return (

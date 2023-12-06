@@ -20,10 +20,6 @@
   .userProfilesTable th {
     background-color: #f2f2f2;
   }
-  .userProfilesTable tbody tr:hover {
-    background-color: #efe5e5;
-  }
-
   
   .error {
     color: red;

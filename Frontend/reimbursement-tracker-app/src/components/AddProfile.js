@@ -1,16 +1,19 @@
 // AddProfile.js
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import './AddProfile.css';
 
 const AddProfile = () => {
+  // Get username from local storage
+  const storedUsername = localStorage.getItem('username');
+
   const [profileData, setProfileData] = useState({
-    username: '',
     firstName: '',
     lastName: '',
     city: '',
     contactNumber: '',
     bankAccountNumber: '',
+    // Remove the 'username' field
   });
 
   const handleInputChange = (e) => {
@@ -31,13 +34,20 @@ const AddProfile = () => {
       alert('Failed to add profile. Please try again.');
     }
   };
+
   const handleCancel = () => {
     window.history.back();
     // Add logic to handle cancellation (e.g., redirect to another page)
     console.log('Operation canceled');
   };
-  
 
+  // Set the 'username' field using the value retrieved from local storage
+  useEffect(() => {
+    setProfileData((prevData) => ({
+      ...prevData,
+      username: storedUsername || '',
+    }));
+  }, [storedUsername]);
   return (
     <div className="addProfileContainer">
       <div className="addProfileBox">
@@ -54,6 +64,7 @@ const AddProfile = () => {
               value={profileData.username}
               onChange={handleInputChange}
               className="form-control"
+              readOnly
             />
           </div>
 

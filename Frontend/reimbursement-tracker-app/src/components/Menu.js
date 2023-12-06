@@ -26,12 +26,7 @@ function Menu() {
           <NavLink to="/" className={`nav-link ${location.pathname === '/' ? 'active-link' : ''}`}>
             Login
           </NavLink>
-          <NavLink
-            to="/signup"
-            className={`nav-link ${location.pathname === '/signup' ? 'active-link' : ''}`}
-          >
-            Register
-          </NavLink>
+          
 
           {/* Profile Dropdown */}
           <div className="profile-dropdown">

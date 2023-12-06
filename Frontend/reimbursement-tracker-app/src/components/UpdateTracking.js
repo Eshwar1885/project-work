@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './Requests.css';
 
 const UpdateTracking = ({ requestId, trackingDetails, onUpdateTracking, onClose }) => {
   const [trackingStatus, setTrackingStatus] = useState(trackingDetails.trackingStatus || '');
