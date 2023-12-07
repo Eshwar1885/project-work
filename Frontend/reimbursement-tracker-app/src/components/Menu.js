@@ -89,6 +89,10 @@ const Menu = () => {
                   <NavLink to="/add-request" className={`nav-link ${location.pathname === '/add-request' ? 'active-link' : ''}`}>
                     Add Request
                   </NavLink>
+                  <NavLink to="/UserRequests" className={`nav-link ${location.pathname === '/UserRequests' ? 'active-link' : ''}`}>
+                   User Requests
+                  </NavLink>
+
                   <NavLink to="/requests" className={`nav-link ${location.pathname === '/requests' ? 'active-link' : ''}`}>
                     Requests
                   </NavLink>

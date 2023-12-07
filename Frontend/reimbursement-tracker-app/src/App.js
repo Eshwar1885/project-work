@@ -31,7 +31,7 @@ function App() {
           <Route path="/requests" element={<Requests/>} />
           <Route path="/AddPayment" element={<AddPayment/>}/>
           <Route path="/GetPayments" element={<GetPayments/>}/>
-          <Route path="/user-requests" element={<UserRequests/>}/>
+          <Route path="/UserRequests" element={<UserRequests/>}/>
 
         </Routes>
       </BrowserRouter>

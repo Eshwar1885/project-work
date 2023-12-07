@@ -2,7 +2,7 @@ body {
   background-image: url('/public/images/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: fixed;
   margin: 0;
   padding: 0;
 }
