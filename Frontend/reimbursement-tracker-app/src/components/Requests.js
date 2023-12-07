@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 const ViewTracking = ({ trackingDetails, onClose }) => {
   return (
     <div>
-      <h2>View Tracking</h2>
+      <h2 className='container'>View Tracking</h2>
       <label>
         Request ID:
         <input type="text" name="requestId" value={trackingDetails.requestId} readOnly />

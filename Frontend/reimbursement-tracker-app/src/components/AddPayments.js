@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './AddPayment.css';
+import './AddPayments.css';
 
 const AddPayment = () => {
   const [paymentData, setPaymentData] = useState({
@@ -32,7 +32,7 @@ const AddPayment = () => {
   };
 
   return (
-    <div>
+    <div className='container'>
       <h2>Add Payment</h2>
       <form onSubmit={handleSubmit}>
         <div>

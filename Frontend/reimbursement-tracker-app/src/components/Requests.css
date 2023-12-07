@@ -1,40 +1,118 @@
-/* Requests.css */
+/* AddPayment.css */
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #333;
+  text-align: center;
+}
+
+form {
+  display: grid;
+  grid-gap: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design using Media Queries */
+@media (max-width: 768px) {
+  .container {
+    margin: 20px;
+    padding: 10px;
   }
-  
-  th, td {
-    border: 1px solid #17529a;
+
+  form {
+    grid-gap: 10px;
+  }
+
+  input,
+  button {
     padding: 8px;
-    text-align: left;
   }
-  
-  th {
-    background-color: #f2f2f2;
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 20px;
   }
 
-  .modal-content{
-background: transparent;
-  }
-  tbody tr:hover {
-    background-color: #efe5e5;
-  }
-  .btn-secondary {
-    background-color: #007bff;
-    border: none;
-    padding: 8px 16px;
-    margin-right: 5px;
-    cursor: pointer;
-  }
-  
-  .btn-small {
-    padding: 5px 10px;
+  input,
+  button {
     font-size: 14px;
   }
-  
-  .btn:hover {
-    opacity: 0.8;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd; /* Change border color as needed */
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5; /* Change hover background color as needed */
+}
+
+/* Responsive Table Styling */
+@media (max-width: 768px) {
+  th, td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
   }
+
+  th {
+    display: none; /* Hide table headers in small screens */
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #ddd; /* Add bottom border for each table cell */
+  }
+}

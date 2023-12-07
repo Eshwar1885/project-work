@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Requests.css';
+import { message } from "antd";
 
 const UpdateTracking = ({ requestId, trackingDetails, onUpdateTracking, onClose }) => {
   const [trackingStatus, setTrackingStatus] = useState(trackingDetails.trackingStatus || '');
   const [approvalDate, setApprovalDate] = useState(trackingDetails.approvalDate || '');
   const [reimbursementDate, setReimbursementDate] = useState(trackingDetails.reimbursementDate || '');
 
+  //console.log;
   const handleUpdate = async () => {
     const updatedTracking = {
       trackingId: trackingDetails.trackingId,
@@ -16,13 +18,52 @@ const UpdateTracking = ({ requestId, trackingDetails, onUpdateTracking, onClose 
       reimbursementDate: reimbursementDate,
     };
 
+
+    const email=String(localStorage.getItem("username"));
+
+    const sendEmail = async () => {
+      try {
+        const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+
+          },
+          body: JSON.stringify({
+            
+            service_id: 'service_n4mw93i',
+            template_id: 'template_ijlup9j',
+            user_id: 'yKBDhfI1SwLvmocO0',
+            template_params: {
+              to_email: email,
+              message: "Dear Employee, your request status is "+trackingStatus,
+              'g-recaptcha-response': '03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd...',
+            },
+          }),
+        });
+        
+    
+        if (!response.ok) {
+          console.error('EmailJS request failed:', response.statusText);
+          // Handle the error as needed
+        } else {
+          message.success('Email sent successfully!');
+          // Handle success
+        }
+      } catch (error) {
+        message.error('Error sending email:', error);
+        // Handle the error as needed
+      }
+    };
+    
     try {
       // Make the API call to update the tracking status
       const response = await axios.put(`https://localhost:7007/api/Tracking`, updatedTracking);
-
+     
       // Handle the response (log, show a message, etc.)
       console.log(response.data);
       alert('Tracking Status Updated Successfully');
+      sendEmail();
 
       // Close the modal after updating
       onClose();

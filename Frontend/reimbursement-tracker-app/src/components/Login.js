@@ -1,7 +1,7 @@
 // Login.js
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import './Login.css';
 
@@ -10,15 +10,14 @@ const Login = () => {
         username: "",
         password: "",
     };
-
+    const navigate = useNavigate();
     const [formData, setFormData] = useState(initialFormData);
     const [errors, setErrors] = useState({});
     const [loginResult, setLoginResult] = useState(null);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-        setErrors({ ...errors, [e.target.name]: "" });
+        setErrors({ ...errors, [e.target.name]: "" }); // Clear the error when the user starts typing
     };
 
     const checkUserData = () => {
@@ -32,38 +31,48 @@ const Login = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleLogin = async (event) => {
+    const login = async (event) => {
         event.preventDefault();
 
         if (!checkUserData()) return;
 
         try {
+            // Use the appropriate API endpoint for login
             const response = await axios.post("https://localhost:7007/api/User/Login", formData);
 
+            // Check if the response contains a token
             if (response.data && response.data.token) {
                 const token = response.data.token;
                 const username = response.data.username;
+                const role = response.data.role;
 
+
+                // Store the token in local storage
                 localStorage.setItem("token", token);
                 localStorage.setItem("username", username);
-                setLoginResult({ success: true, message: "Login successful!" });
-                setIsLoggedIn(true);
+                localStorage.setItem("role",role);
+                setLoginResult({ success: true});
+                alert("Login Successful!");
+
+                // // Force a page reload upon successful login
+                // window.location.reload();
+                navigate('/Home');
+                window.location.reload();
             } else {
                 setLoginResult({ success: false, message: "Login failed. Token not found in the response." });
             }
         } catch (err) {
             setLoginResult({ success: false, message: "Login failed. Please check your credentials." });
             console.log(err);
-        } finally {
             setFormData(initialFormData);
         }
+        // } finally {
+        //     setFormData(initialFormData); // Clear the form data after both success and failure
+        // }
     };
-
-    const handleLogout = () => {
-        // Implement logout logic (clear local storage, reset state, etc.)
-        localStorage.removeItem("token");
-        localStorage.removeItem("username");
-        setIsLoggedIn(false);
+    const setLoggedIn = (value) => {
+        // Custom function to update the isLoggedIn state
+        // This function can be defined in the parent component
     };
 
     return (
@@ -94,21 +103,15 @@ const Login = () => {
                     )}
 
                     <div className="form-group mt-3">
-                        {isLoggedIn ? (
-                            <button className="btn btn-danger button button-danger" onClick={handleLogout}>
-                                Logout
-                            </button>
-                        ) : (
-                            <button className="btn btn-primary button-primary" onClick={handleLogin}>
-                                Login
-                            </button>
-                        )}
+                        <button className="btn btn-primary button-primary" onClick={login}>
+                            Login
+                        </button>
                         <button className="btn btn-danger button button-danger ml-2">Cancel</button>
                     </div>
-
+                    
                     <div className="signup-link">
                         <p>
-                            Don't have an account?
+                            Don't have an account? 
                             <Link to="/signup"> Sign up here</Link>.
                         </p>
                     </div>

@@ -10,8 +10,9 @@ import AddRequest from './components/AddRequest';
 import Requests from './components/Requests';
 import GetPayments from './components/GetPayments';
 import AddPayment from './components/AddPayments';
-import UserRequests from './components/UpdateRequests';
 import './App.css';
+import Home from './components/Home';
+import UserRequests from './components/UserRequests';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
       <BrowserRouter>
         <Menu />
         <Routes>
-          <Route path='/' element={<Login />} />
+        <Route path='/Home' element={<Home/>} />
+          <Route path='/Login' element={<Login />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/add-profile" element={<AddProfile />} />
           <Route path="/user-profile" element={<UserProfile />} />

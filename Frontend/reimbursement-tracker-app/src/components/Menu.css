@@ -1,9 +1,14 @@
 /* Menu.css */
 
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
 .header {
   background-color: #007bff;
   color: #fff;
-  padding: 10px;
+  padding: 20px;
 }
 
 .center-container {
@@ -13,122 +18,40 @@
 
 .nav-links {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
 }
 
 .nav-link {
   color: #fff;
   text-decoration: none;
-  margin: 0 20px;
   font-size: 1rem;
   transition: color 0.3s;
 }
 
-.nav-link:hover {
-  color: yellow; /* Change the hover color as needed */
-}
-
-
+.nav-link:hover,
 .active-link {
-  /* Specific style for the active link */
-  font-weight: bold;
-  text-decoration: underline;
-  color: yellow; /* Change the color to make it more noticeable */
+  color: yellow; /* Change the hover and active color as needed */
 }
 
-.logout-button {
-  /* Specific style for the "Logout" button */
-  color: #fff;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.logout-button:hover {
-  text-decoration: underline;
-}
-
-/*profile*/
-/* Menu.css */
-
-.profile-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.profile-dropdown .nav-link {
-  cursor: pointer;
-  padding: 15px;
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-.profile-dropdown .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(255, 0, 0, 0.1);
-  z-index: 1;
-  border-radius: 8px;
-  overflow: hidden;
-  width: 200px;
-  transform: translateY(10px);
-  opacity: 0;
-  transition: transform 0.3s, opacity 0.3s;
-}
-
-.profile-dropdown:hover .dropdown-content {
-  display: block;
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.profile-dropdown .dropdown-content .nav-link {
-  display: block;
-  padding: 15px;
-  color: greenyellow;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.profile-dropdown .dropdown-content .nav-link:hover {
-  background-color: #f0f0f0;
-  color: #0066cc;
-}
-
-.active-link,
-.profile-dropdown:hover .nav-link {
-  color: #0066cc;
-}
-
-/* AddPayment.css */
-/* Menu.css */
-
-.payment-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
+.logout-button,
+.profile-dropdown .nav-link,
 .payment-dropdown .nav-link {
   cursor: pointer;
-  padding: 15px;
-  color: #ffffff;
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
   transition: color 0.3s;
 }
 
+.profile-dropdown .dropdown-content,
 .payment-dropdown .dropdown-content {
   display: none;
   position: absolute;
   background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 128, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1;
   border-radius: 8px;
   overflow: hidden;
@@ -138,26 +61,56 @@
   transition: transform 0.3s, opacity 0.3s;
 }
 
+.profile-dropdown:hover .dropdown-content,
 .payment-dropdown:hover .dropdown-content {
   display: block;
   transform: translateY(0);
   opacity: 1;
 }
 
+.profile-dropdown .dropdown-content .nav-link,
 .payment-dropdown .dropdown-content .nav-link {
   display: block;
-  padding: 15px;
-  color: blue;
-  text-decoration: none;
+  padding: 10px 15px; /* Adjusted padding */
   transition: background-color 0.3s, color 0.3s;
 }
 
+.profile-dropdown .dropdown-content .nav-link:hover,
 .payment-dropdown .dropdown-content .nav-link:hover {
   background-color: #f0f0f0;
-  color: rgb(47, 47, 255);
+  color: #0066cc; /* Adjust the color as needed */
 }
 
-.active-link
+.active-link,
+.profile-dropdown:hover .nav-link,
 .payment-dropdown:hover .nav-link {
-  color: blue;
+  color: #1100cc;
+}
+
+/* Media Query for Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-link,
+  .logout-button,
+  .profile-dropdown .nav-link,
+  .payment-dropdown .nav-link {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/*icon styling*/
+.menu-icon {
+  cursor: pointer;
+  font-size: 1.5rem; /* Adjust the font size as needed */
+  transition: transform 0.3s; /* Add transition effect for transform property */
+}
+
+.menu-icon:hover {
+  transform: scale(1.2); /* Adjust the scale factor as needed */
 }

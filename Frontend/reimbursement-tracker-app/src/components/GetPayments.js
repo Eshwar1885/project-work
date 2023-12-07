@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import './AddPayments.css'
 const GetPayments = () => {
   // State variables
   const [paymentData, setPaymentData] = useState([]);
