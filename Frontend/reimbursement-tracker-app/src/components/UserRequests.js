@@ -96,7 +96,7 @@ const UserRequests = () => {
               Document: 
               {/* Add a View button for the document */}
               
-              <button onClick={() => handleViewDocument(request.document)} className="btn btn-secondary">View Document</button>
+              <button onClick={() => handleViewDocument(request.document)} className="Button">View Document</button>
             </p>
             <p>Description: {request.description}</p>
             <p>Request Date: {new Date(request.requestDate).toLocaleString()}</p>

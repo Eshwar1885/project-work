@@ -35,7 +35,6 @@ const ViewTracking = ({ trackingDetails, onClose }) => {
   );
 };
 
-
 const Requests = () => {
   const [requests, setRequests] = useState([]);
   const [selectedRequest, setSelectedRequest] = useState(null);
@@ -43,7 +42,7 @@ const Requests = () => {
   const [updateTrackingDetails, setUpdateTrackingDetails] = useState(null);
   const [documentModal, setDocumentModal] = useState({ isOpen: false, documentUrl: '' });
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredRequests, setFilteredRequests] = useState([]); // Add this line
+  const [filteredRequests, setFilteredRequests] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -84,16 +83,15 @@ const Requests = () => {
   const handleCloseUpdateTrackingModal = () => {
     setUpdateTrackingDetails(null);
   };
+
   const handleViewDocument = (documentUrl) => {
-    // // Open the document in a new tab or window
-    // window.open(documentUrl, '_blank');
-    // Open the document in the modal
     setDocumentModal({ isOpen: true, documentUrl });
   };
+
   const handleCloseDocumentModal = () => {
-    // Close the document modal
     setDocumentModal({ isOpen: false, documentUrl: '' });
   };
+
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value.toLowerCase());
   };
@@ -104,12 +102,10 @@ const Requests = () => {
     const filteredRequests = requests.filter((request) =>
       request.expenseCategory.toLowerCase().includes(query) ||
       request.username.toLowerCase().includes(query)
-      // Add more fields as needed
     );
 
     setFilteredRequests(filteredRequests);
-};
-
+  };
 
   return (
     <div>
@@ -143,7 +139,7 @@ const Requests = () => {
               <td>{request.username}</td>
               <td>{request.expenseCategory}</td>
               <td>{request.amount}</td>
-              <td><button onClick={() => handleViewDocument(request.document)} className="btn btn-secondary">View Document</button></td>
+              <td><button onClick={() => handleViewDocument(request.document)} className="Button">View Document</button></td>
               <td>{request.description}</td>
               <td>{new Date(request.requestDate).toLocaleString()}</td>
               <td>
@@ -152,7 +148,7 @@ const Requests = () => {
                     setSelectedRequest(request);
                     handleViewTrackingClick(request.requestId);
                   }}
-                  className="btn btn-secondary btn-small"
+                  className="Button"
                 >
                   View Tracking
                 </button>
@@ -161,7 +157,7 @@ const Requests = () => {
                     setSelectedRequest(request);
                     handleUpdateTrackingClick(request.requestId);
                   }}
-                  className="btn btn-secondary btn-small"
+                  className="Button-warning"
                 >
                   Update Tracking
                 </button>
@@ -171,7 +167,6 @@ const Requests = () => {
         </tbody>
       </table>
 
-      {/* Modal for View Tracking */}
       {selectedRequest && viewTrackingDetails && (
         <div className="modal">
           <div className="modal-content">
@@ -180,7 +175,6 @@ const Requests = () => {
         </div>
       )}
 
-      {/* Modal for Update Tracking Form */}
       {selectedRequest && updateTrackingDetails && (
         <div className="modal">
           <div className="modal-content">
@@ -188,7 +182,6 @@ const Requests = () => {
               requestId={selectedRequest.requestId}
               trackingDetails={updateTrackingDetails}
               onUpdateTracking={() => {
-                // Handle update tracking logic here if needed
                 handleCloseUpdateTrackingModal();
               }}
               onClose={handleCloseUpdateTrackingModal}
@@ -196,17 +189,17 @@ const Requests = () => {
           </div>
         </div>
       )}
+
       {documentModal.isOpen && (
-  <div className="document-modal">
-    <div className="document-content">
-      <button className="close-btn" onClick={handleCloseDocumentModal}>
-        <span>&times;</span>
-      </button>
-      {/* Render the document content here */}
-      <iframe src={documentModal.documentUrl} title="Document Viewer" width="100%" height="100%" />
-    </div>
-  </div>
-)}
+        <div className="document-modal">
+          <div className="document-content">
+            <button className="close-btn" onClick={handleCloseDocumentModal}>
+              <span>&times;</span>
+            </button>
+            <iframe src={documentModal.documentUrl} title="Document Viewer" width="100%" height="100%" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

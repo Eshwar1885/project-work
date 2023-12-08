@@ -37,7 +37,12 @@
   
   .btn-primary {
     background-color: #007bff;
-    color: #fff;
+  }
+
+  .Button{
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
   }
     /* Add these styles to ensure the modal is displayed properly */
     .document-modal {
