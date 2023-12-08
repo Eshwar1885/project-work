@@ -5,13 +5,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 35px;
-
-  margin: 50px auto;
+  margin: 20px auto;
   max-width: 600px; /* Set a max-width for better responsiveness */
 }
-
-
 
 .addRequestContainer h2 {
   text-align: center;
@@ -91,6 +87,9 @@
 
 .checkbox-label input {
   margin-right: 8px;
+}
+.para{
+  text-align: center;
 }
 
 /* Styling for the 'Click to View Policies' button */

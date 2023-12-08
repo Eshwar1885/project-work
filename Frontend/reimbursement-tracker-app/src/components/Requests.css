@@ -1,13 +1,16 @@
 /* Add these styles to your existing CSS file */
-
+h2{
+  padding-top:80px;
+  margin:35px;
+}
 .container {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+ 
 }
 
 .search-bar {
- flex:1/* Takes remaining space */
+ flex:1;/* Takes remaining space */
+ margin-right: 10px;
 }
 
 .search-button {
@@ -39,6 +42,7 @@
 .Button-warning {
   background-color: #ffc107;
   color: #212529;
+  margin:5px;
   padding: 10px;
   border: none;
   cursor: pointer;
@@ -53,7 +57,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: #d6d6d6;
   padding: 20px;
   z-index: 1000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -199,5 +203,17 @@ tbody tr:hover {
   td {
     border: none;
     border-bottom: 1px solid #ddd; /* Add bottom border for each table cell */
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-bar,
+  .search-button {
+    width: 100%;
   }
 }

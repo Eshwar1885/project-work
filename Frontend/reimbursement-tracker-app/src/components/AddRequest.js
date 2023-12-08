@@ -160,7 +160,7 @@ const AddRequest = () => {
             checked={requestData.agreeToPolicies}
             onChange={handleInputChange}
           />
-          I agree to the reimbursement policies
+         <p className='para'> I agree to the reimbursement policies </p>
         </label>
 
         <div>

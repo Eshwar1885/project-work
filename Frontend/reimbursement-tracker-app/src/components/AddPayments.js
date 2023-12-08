@@ -31,9 +31,13 @@ const AddPayment = () => {
     }
   };
 
-  return (
-    <div className='container'>
-      <h2>Add Payment</h2>
+ // ...
+
+return (
+  <div className='container'>
+      <h2 className='heading'>Add Payment</h2>
+    <div className='form-wrapper'>
+    
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="RequestId">Request ID:</label>
@@ -104,7 +108,9 @@ const AddPayment = () => {
         <button type="submit">Add Payment</button>
       </form>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default AddPayment;

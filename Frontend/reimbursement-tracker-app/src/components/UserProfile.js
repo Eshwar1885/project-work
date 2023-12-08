@@ -69,8 +69,8 @@ const UserProfile = ({ match }) => {
 
     return (
         <div className="userProfileContainer">
+            <h2 className="userProfileHeader">User Profile</h2>
             <div className="userProfileBox">
-                <h2 className="userProfileHeader">User Profile</h2>
                 <div className="userProfileDetails">
                     <p>
                         <strong>User ID:</strong> {userProfile.userId}

@@ -50,8 +50,9 @@ const AddProfile = () => {
   }, [storedUsername]);
   return (
     <div className="addProfileContainer">
-      <div className="addProfileBox">
         <h2 className="addProfileHeader">Add Profile</h2>
+      <div className="addProfileBox">
+      
         <form className="addProfileForm" onSubmit={handleSubmit}>
           <div className="fieldContainer">
             <label className="fieldLabel" htmlFor="username">
