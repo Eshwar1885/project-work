@@ -12,6 +12,7 @@
 
 .userProfilesTable th,
 .userProfilesTable td {
+  font-weight: bolder;
   border: 1px solid #17529a;
   padding: 8px;
   text-align: left;

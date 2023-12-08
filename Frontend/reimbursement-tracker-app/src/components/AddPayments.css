@@ -49,6 +49,9 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+.th,td{
+  font-weight: bolder;
+}
 
 /* Responsive Design using Media Queries */
 @media (max-width: 768px) {
