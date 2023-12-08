@@ -5,8 +5,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 35px;
+
   margin: 50px auto;
   max-width: 600px; /* Set a max-width for better responsiveness */
 }

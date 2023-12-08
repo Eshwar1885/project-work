@@ -37,7 +37,7 @@ const GetPayments = () => {
     <div>
       <h2>Payment Details</h2>
 
-      <button onClick={fetchPaymentDetails} disabled={loading}>
+      <button onClick={fetchPaymentDetails} disabled={loading} className='btnn'>
         Get All Payments
       </button>
 

@@ -19,10 +19,10 @@ const ViewTracking = ({ trackingDetails, onClose }) => {
         Tracking Status:
         <input type="text" name="trackingStatus" value={trackingDetails.trackingStatus} readOnly />
       </label>
-      
+
       <label>
         Approval Date:
-        <input  name="approvalDate" value={trackingDetails.approvalDate || ''} readOnly />
+        <input name="approvalDate" value={trackingDetails.approvalDate || ''} readOnly />
       </label>
       <label>
         Reimbursement Date:
@@ -49,7 +49,7 @@ const Requests = () => {
       try {
         const response = await axios.get('https://localhost:7007/api/Request');
         setRequests(response.data);
-        setFilteredRequests(response.data); 
+        setFilteredRequests(response.data);
       } catch (error) {
         console.error('Error fetching requests:', error);
       }
@@ -110,14 +110,17 @@ const Requests = () => {
   return (
     <div>
       <h2>Requests</h2>
-      <div>
+      <div className='container'>
         <input
+          className="search-bar"
           type="text"
           placeholder="Search..."
           value={searchQuery}
           onChange={handleSearchChange}
         />
-        <button onClick={handleSearchButtonClick}>Search</button>
+        <button className="search-button" onClick={handleSearchButtonClick}>
+          Search
+        </button>
       </div>
       <table>
         <thead>

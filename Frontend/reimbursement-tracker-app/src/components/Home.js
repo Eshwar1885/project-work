@@ -10,7 +10,7 @@ const Home = () => {
     <div className="home-container">
       <header>
         <h1>Welcome to Reimbursement Tracker</h1>
-        <p>Efficiently manage and track employee reimbursements with our HR app.</p>
+        <p>Efficiently manage and track employee reimbursements with our app.</p>
       </header>
 
       <section className="features">

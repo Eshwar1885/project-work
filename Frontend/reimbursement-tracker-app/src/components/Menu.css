@@ -1,14 +1,16 @@
-/* Menu.css */
-
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
+  padding-top: 20px; /* Adjust the padding as needed */
 }
 
 .header {
   background-color: #007bff;
   color: #fff;
   padding: 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 
 .center-container {

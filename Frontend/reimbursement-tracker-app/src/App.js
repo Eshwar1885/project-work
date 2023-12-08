@@ -13,8 +13,14 @@ import AddPayment from './components/AddPayments';
 import './App.css';
 import Home from './components/Home';
 import UserRequests from './components/UserRequests';
+import React from 'react';
+import axios from 'axios';
 
+
+const access_token = localStorage.getItem("token");
+axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
 function App() {
+  
   return (
     <div>
       <BrowserRouter>
