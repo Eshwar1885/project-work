@@ -38,7 +38,8 @@ body {
 
 .logout-button,
 .profile-dropdown .nav-link,
-.payment-dropdown .nav-link {
+.payment-dropdown .nav-link,
+.requests-dropdown .nav-link {
   cursor: pointer;
   text-decoration: none;
   font-size: 16px;
@@ -47,7 +48,8 @@ body {
 }
 
 .profile-dropdown .dropdown-content,
-.payment-dropdown .dropdown-content {
+.payment-dropdown .dropdown-content,
+.requests-dropdown .dropdown-content {
   display: none;
   position: absolute;
   background-color: #ffffff;
@@ -62,28 +64,32 @@ body {
 }
 
 .profile-dropdown:hover .dropdown-content,
-.payment-dropdown:hover .dropdown-content {
+.payment-dropdown:hover .dropdown-content,
+.requests-dropdown:hover .dropdown-content {
   display: block;
   transform: translateY(0);
   opacity: 1;
 }
 
 .profile-dropdown .dropdown-content .nav-link,
-.payment-dropdown .dropdown-content .nav-link {
+.payment-dropdown .dropdown-content .nav-link,
+.requests-dropdown .dropdown-content .nav-link {
   display: block;
   padding: 10px 15px; /* Adjusted padding */
   transition: background-color 0.3s, color 0.3s;
 }
 
 .profile-dropdown .dropdown-content .nav-link:hover,
-.payment-dropdown .dropdown-content .nav-link:hover {
+.payment-dropdown .dropdown-content .nav-link:hover,
+.requests-dropdown .dropdown-content .nav-link:hover {
   background-color: #f0f0f0;
   color: #0066cc; /* Adjust the color as needed */
 }
 
 .active-link,
 .profile-dropdown:hover .nav-link,
-.payment-dropdown:hover .nav-link {
+.payment-dropdown:hover .nav-link,
+.requests-dropdown:hover .nav-link {
   color: #1100cc;
 }
 
@@ -97,7 +103,8 @@ body {
   .nav-link,
   .logout-button,
   .profile-dropdown .nav-link,
-  .payment-dropdown .nav-link {
+  .payment-dropdown .nav-link,
+  .requests-dropdown .nav-link {
     margin: 10px 0;
     width: 100%;
     text-align: center;
@@ -114,3 +121,4 @@ body {
 .menu-icon:hover {
   transform: scale(1.2); /* Adjust the scale factor as needed */
 }
+

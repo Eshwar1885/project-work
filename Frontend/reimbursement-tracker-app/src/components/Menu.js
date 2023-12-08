@@ -79,22 +79,31 @@ const Menu = () => {
                         <NavLink to="/user-profile" className={`nav-link ${location.pathname === '/user-profile' ? 'active-link' : ''}`}>
                           User Profile
                         </NavLink>
-                        <NavLink to="/user-profiles" className={`nav-link ${location.pathname === '/user-profiles' ? 'active-link' : ''}`}>
+                      </div>
+                    )}
+                  </div>
+                  <NavLink to="/user-profiles" className={`nav-link ${location.pathname === '/user-profiles' ? 'active-link' : ''}`}>
                           User Profiles
+                        </NavLink>
+
+                  {/* Requests Dropdown */}
+                  <div className="requests-dropdown">
+                    <div className={`nav-link ${location.pathname === '/add-request' || location.pathname === '/user-requests' ? 'active-link' : ''}`}>
+                      Requests
+                    </div>
+                    {isProfileDropdownOpen && (
+                      <div className="dropdown-content">
+                        <NavLink to="/add-request" className={`nav-link ${location.pathname === '/add-request' ? 'active-link' : ''}`}>
+                          Add Request
+                        </NavLink>
+                        <NavLink to="/user-requests" className={`nav-link ${location.pathname === '/user-requests' ? 'active-link' : ''}`}>
+                          User Requests
                         </NavLink>
                       </div>
                     )}
                   </div>
-
-                  <NavLink to="/add-request" className={`nav-link ${location.pathname === '/add-request' ? 'active-link' : ''}`}>
-                    Add Request
-                  </NavLink>
-                  <NavLink to="/UserRequests" className={`nav-link ${location.pathname === '/UserRequests' ? 'active-link' : ''}`}>
-                   User Requests
-                  </NavLink>
-
                   <NavLink to="/requests" className={`nav-link ${location.pathname === '/requests' ? 'active-link' : ''}`}>
-                    Requests
+                  All Requests
                   </NavLink>
 
                   {/* Payment Dropdown */}
