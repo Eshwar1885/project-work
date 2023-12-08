@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\wwwroot\\Images\\88d82560-e2ba-478f-aa31-f864330e6794_ASP.net modified.docx",
+      "PackagePath": "staticwebassets\\Images\\88d82560-e2ba-478f-aa31-f864330e6794_ASP.net modified.docx"
+    },
+    {
+      "Id": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\wwwroot\\Images\\97afa135-0986-4f03-9627-4055f1a79a63_Himacharan-mandatorydocs.pdf",
+      "PackagePath": "staticwebassets\\Images\\97afa135-0986-4f03-9627-4055f1a79a63_Himacharan-mandatorydocs.pdf"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.ReimbursementTrackerApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.ReimbursementTrackerApp.props",
+      "PackagePath": "build\\ReimbursementTrackerApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.ReimbursementTrackerApp.props",
+      "PackagePath": "buildMultiTargeting\\ReimbursementTrackerApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.ReimbursementTrackerApp.props",
+      "PackagePath": "buildTransitive\\ReimbursementTrackerApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

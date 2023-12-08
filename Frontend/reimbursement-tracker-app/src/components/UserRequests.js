@@ -7,6 +7,7 @@ const UserRequests = () => {
   const [userRequests, setUserRequests] = useState([]);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [isUpdateModalOpen, setUpdateModalOpen] = useState(false);
+  const [documentModal, setDocumentModal] = useState({ isOpen: false, documentUrl: '' });
 
   useEffect(() => {
     const fetchUserRequests = async () => {
@@ -18,6 +19,7 @@ const UserRequests = () => {
           // Send a GET request to fetch user-specific requests
           const response = await axios.get(`https://localhost:7007/api/Request/user/${username}`);
           setUserRequests(response.data);
+          console.log(response);
         } else {
           console.log('Username not found in localStorage. Please log in.');
         }
@@ -36,7 +38,8 @@ const UserRequests = () => {
     if (isConfirmed) {
       try {
         // Send a DELETE request to delete the request on the server
-        await axios.delete(`https://localhost:7007/api/Request/${requestId}`);
+         await axios.delete(`https://localhost:7007/api/Request/${requestId}`);
+      
         
         // Update the user requests after deleting
         const updatedRequests = userRequests.filter((request) => request.requestId !== requestId);
@@ -69,6 +72,16 @@ const UserRequests = () => {
     setUpdateModalOpen(false);
     setSelectedRequest(null);
   };
+  const handleViewDocument = (documentUrl) => {
+    // // Open the document in a new tab or window
+    // window.open(documentUrl, '_blank');
+    // Open the document in the modal
+    setDocumentModal({ isOpen: true, documentUrl });
+  };
+  const handleCloseDocumentModal = () => {
+    // Close the document modal
+    setDocumentModal({ isOpen: false, documentUrl: '' });
+  };
 
   return (
     <div>
@@ -79,7 +92,12 @@ const UserRequests = () => {
             <h3>Request ID: {request.requestId}</h3>
             <p>Expense Category: {request.expenseCategory}</p>
             <p>Amount: {request.amount}</p>
-            <p>Document: {request.document}</p>
+            <p>
+              Document: 
+              {/* Add a View button for the document */}
+              
+              <button onClick={() => handleViewDocument(request.document)} className="btn btn-secondary">View Document</button>
+            </p>
             <p>Description: {request.description}</p>
             <p>Request Date: {new Date(request.requestDate).toLocaleString()}</p>
             <div className="actions">
@@ -97,6 +115,17 @@ const UserRequests = () => {
           onClose={handleCloseUpdateModal}
         />
       )}
+      {documentModal.isOpen && (
+  <div className="document-modal">
+    <div className="document-content">
+      <button className="close-btn" onClick={handleCloseDocumentModal}>
+        <span>&times;</span>
+      </button>
+      {/* Render the document content here */}
+      <iframe src={documentModal.documentUrl} title="Document Viewer" width="100%" height="100%" />
+    </div>
+  </div>
+)}
     </div>
   );
 };

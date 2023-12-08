@@ -9,6 +9,7 @@ const Menu = () => {
   const navigate = useNavigate();
   const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [isPaymentDropdownOpen, setPaymentDropdownOpen] = useState(false);
+  const [isRequestDropdownOpen, setRequestDropdownOpen] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
 
@@ -31,14 +32,20 @@ const Menu = () => {
 
   const toggleProfileDropdown = () => {
     setProfileDropdownOpen(!isProfileDropdownOpen);
-    // Close the payment dropdown when profile dropdown is opened
     setPaymentDropdownOpen(false);
+    setRequestDropdownOpen(false);
   };
 
   const togglePaymentDropdown = () => {
     setPaymentDropdownOpen(!isPaymentDropdownOpen);
-    // Close the profile dropdown when payment dropdown is opened
     setProfileDropdownOpen(false);
+    setRequestDropdownOpen(false);
+  };
+
+  const toggleRequestDropdown = () => {
+    setRequestDropdownOpen(!isRequestDropdownOpen);
+    setProfileDropdownOpen(false);
+    setPaymentDropdownOpen(false);
   };
 
   const toggleMenu = () => {
@@ -86,24 +93,25 @@ const Menu = () => {
                           User Profiles
                         </NavLink>
 
-                  {/* Requests Dropdown */}
-                  <div className="requests-dropdown">
-                    <div className={`nav-link ${location.pathname === '/add-request' || location.pathname === '/user-requests' ? 'active-link' : ''}`}>
+                  {/* Request Dropdown */}
+                  <div className="request-dropdown">
+                    <div className={`nav-link ${isRequestDropdownOpen ? 'active-link' : ''}`} onClick={toggleRequestDropdown}>
                       Requests
                     </div>
-                    {isProfileDropdownOpen && (
+                    {isRequestDropdownOpen && (
                       <div className="dropdown-content">
                         <NavLink to="/add-request" className={`nav-link ${location.pathname === '/add-request' ? 'active-link' : ''}`}>
                           Add Request
                         </NavLink>
-                        <NavLink to="/user-requests" className={`nav-link ${location.pathname === '/user-requests' ? 'active-link' : ''}`}>
+                        <NavLink to="/UserRequests" className={`nav-link ${location.pathname === '/UserRequests' ? 'active-link' : ''}`}>
                           User Requests
                         </NavLink>
                       </div>
                     )}
                   </div>
+
                   <NavLink to="/requests" className={`nav-link ${location.pathname === '/requests' ? 'active-link' : ''}`}>
-                  All Requests
+                    View All Requests
                   </NavLink>
 
                   {/* Payment Dropdown */}

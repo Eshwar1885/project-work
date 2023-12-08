@@ -2,19 +2,18 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import UpdateTracking from './UpdateTracking';
 import './Requests.css';
-import Button from 'react-bootstrap/Button';
 
 const ViewTracking = ({ trackingDetails, onClose }) => {
   return (
     <div>
-      <h2 className='container'>View Tracking</h2>
+      <h2>View Tracking</h2>
       <label>
         Request ID:
         <input type="text" name="requestId" value={trackingDetails.requestId} readOnly />
       </label>
       <label>
         Tracking ID:
-        <input type="text" name="trackingSId" value={trackingDetails.trackingId} readOnly />
+        <input type="text" name="trackingId" value={trackingDetails.trackingId} readOnly />
       </label>
       <label>
         Tracking Status:
@@ -42,12 +41,16 @@ const Requests = () => {
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [viewTrackingDetails, setViewTrackingDetails] = useState(null);
   const [updateTrackingDetails, setUpdateTrackingDetails] = useState(null);
+  const [documentModal, setDocumentModal] = useState({ isOpen: false, documentUrl: '' });
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredRequests, setFilteredRequests] = useState([]); // Add this line
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://localhost:7007/api/Request');
         setRequests(response.data);
+        setFilteredRequests(response.data); 
       } catch (error) {
         console.error('Error fetching requests:', error);
       }
@@ -81,10 +84,45 @@ const Requests = () => {
   const handleCloseUpdateTrackingModal = () => {
     setUpdateTrackingDetails(null);
   };
+  const handleViewDocument = (documentUrl) => {
+    // // Open the document in a new tab or window
+    // window.open(documentUrl, '_blank');
+    // Open the document in the modal
+    setDocumentModal({ isOpen: true, documentUrl });
+  };
+  const handleCloseDocumentModal = () => {
+    // Close the document modal
+    setDocumentModal({ isOpen: false, documentUrl: '' });
+  };
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value.toLowerCase());
+  };
+
+  const handleSearchButtonClick = () => {
+    const query = searchQuery.trim().toLowerCase();
+
+    const filteredRequests = requests.filter((request) =>
+      request.expenseCategory.toLowerCase().includes(query) ||
+      request.username.toLowerCase().includes(query)
+      // Add more fields as needed
+    );
+
+    setFilteredRequests(filteredRequests);
+};
+
 
   return (
     <div>
       <h2>Requests</h2>
+      <div>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+        <button onClick={handleSearchButtonClick}>Search</button>
+      </div>
       <table>
         <thead>
           <tr>
@@ -99,25 +137,26 @@ const Requests = () => {
           </tr>
         </thead>
         <tbody>
-          {requests.map((request) => (
+          {filteredRequests.map((request) => (
             <tr key={request.requestId}>
               <td>{request.requestId}</td>
               <td>{request.username}</td>
               <td>{request.expenseCategory}</td>
               <td>{request.amount}</td>
-              <td>{request.document}</td>
+              <td><button onClick={() => handleViewDocument(request.document)} className="btn btn-secondary">View Document</button></td>
               <td>{request.description}</td>
               <td>{new Date(request.requestDate).toLocaleString()}</td>
               <td>
-                <Button
+                <button
                   onClick={() => {
                     setSelectedRequest(request);
                     handleViewTrackingClick(request.requestId);
                   }}
-                  Button variant="primary">
+                  className="btn btn-secondary btn-small"
+                >
                   View Tracking
-                </Button>
-                <Button
+                </button>
+                <button
                   onClick={() => {
                     setSelectedRequest(request);
                     handleUpdateTrackingClick(request.requestId);
@@ -125,7 +164,7 @@ const Requests = () => {
                   className="btn btn-secondary btn-small"
                 >
                   Update Tracking
-                </Button>
+                </button>
               </td>
             </tr>
           ))}
@@ -157,6 +196,17 @@ const Requests = () => {
           </div>
         </div>
       )}
+      {documentModal.isOpen && (
+  <div className="document-modal">
+    <div className="document-content">
+      <button className="close-btn" onClick={handleCloseDocumentModal}>
+        <span>&times;</span>
+      </button>
+      {/* Render the document content here */}
+      <iframe src={documentModal.documentUrl} title="Document Viewer" width="100%" height="100%" />
+    </div>
+  </div>
+)}
     </div>
   );
 };

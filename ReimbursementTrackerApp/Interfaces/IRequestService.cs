@@ -1,4 +1,5 @@
-﻿using ReimbursementTrackerApp.Models.DTOs;
+﻿using ReimbursementTrackerApp.Models;
+using ReimbursementTrackerApp.Models.DTOs;
 
 namespace ReimbursementTrackerApp.Interfaces
 {
@@ -34,13 +35,7 @@ namespace ReimbursementTrackerApp.Interfaces
         /// <param name="requestId">The ID of the request to update.</param>
         /// <param name="trackingStatus">The new tracking status.</param>
         /// <returns>The updated RequestDTO if the update is successful, otherwise null.</returns>
-        RequestDTO Update(int RequestId, string TrackingStatus);
-
-        /// <summary>
-        /// Retrieves a request by its ID.
-        /// </summary>
-        /// <param name="complaintId">The ID of the request to retrieve.</param>
-        /// <returns>The RequestDTO if found, otherwise null.</returns>
+  
         RequestDTO GetRequestById(int complaintId);
 
         /// <summary>
@@ -48,19 +43,19 @@ namespace ReimbursementTrackerApp.Interfaces
         /// </summary>
         /// <param name="expenseCategory">The expense category to filter requests.</param>
         /// <returns>A collection of RequestDTOs matching the specified category.</returns>
-        RequestDTO GetRequestByCategory(string expenseCategory);
+        Request GetRequestsByCategory(string expenseCategory);
 
         /// <summary>
         /// Retrieves requests by username.
         /// </summary>
         /// <param name="username">The username to filter requests.</param>
         /// <returns>A collection of RequestDTOs associated with the specified username.</returns>
-        public IEnumerable<RequestDTO> GetRequestsByUsername(string username);
+        public IEnumerable<Request> GetRequestsByUsername(string username);
 
         /// <summary>
         /// Retrieves all requests.
         /// </summary>
         /// <returns>A collection of all RequestDTOs.</returns>
-        IEnumerable<RequestDTO> GetAllRequests();
+        IEnumerable<Request> GetAllRequests();
     }
 }

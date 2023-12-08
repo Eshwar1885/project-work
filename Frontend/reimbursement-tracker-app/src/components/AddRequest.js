@@ -6,7 +6,7 @@ const AddRequest = () => {
   const initialState = {
     expenseCategory: 'Select Category',
     amount: 0,
-    document: '',
+    document: null,
     description: '',
     requestDate: new Date().toISOString().slice(0, 10), // Set default date to today
     customExpenseCategory: '',
@@ -23,36 +23,51 @@ const AddRequest = () => {
   }, []);
 
   const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setRequestData({ ...requestData, [name]: type === 'checkbox' ? checked : value });
+    const { name, type, checked } = e.target;
+  
+    if (type === 'file') {
+      const fileInput = e.target;
+      const file = fileInput.files[0];
+      setRequestData({ ...requestData, [name]: file });
+    } else {
+      setRequestData({ ...requestData, [name]: type === 'checkbox' ? checked : e.target.value });
+    }
   };
+  
+  
+  
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!requestData.agreeToPolicies) {
       alert('Please agree to the reimbursement policies before submitting.');
       return;
     }
+  
     const categoryToSubmit = requestData.customExpenseCategory || requestData.expenseCategory;
-
-
+  
     try {
-      const response = await axios.post('https://localhost:7007/api/Request', {...requestData, 
-      expenseCategory: categoryToSubmit,
-    });
-
+      const formData = new FormData();
+      formData.append('expenseCategory', categoryToSubmit);
+      formData.append('amount', requestData.amount);
+      formData.append('document', requestData.document);
+      formData.append('description', requestData.description);
+      formData.append('requestDate', requestData.requestDate);
+      formData.append('username', requestData.username);
+  
+      const response = await axios.post('https://localhost:7007/api/Request', formData);
+  
       console.log('Request added successfully:', response.data);
       alert('Request added successfully');
       setRequestData({ ...initialState });
-      // Optionally, redirect or show a success message
     } catch (error) {
       console.error('Error adding request:', error.response?.data);
       alert('Failed to add Request. Please try again.');
-      setRequestData({ ...initialState });
-      // Optionally, display an error message to the user
     }
   };
+  
 
   const handleCancel = () => {
     window.history.back();
@@ -100,8 +115,9 @@ const AddRequest = () => {
 
         <label>
           Document:
-          <input type="file" name="document" value={requestData.document} onChange={handleInputChange} />
+          <input type="file" name="document" onChange={handleInputChange} />
         </label>
+
 
         <label>
           Description:

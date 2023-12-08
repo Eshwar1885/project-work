@@ -34,7 +34,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// <param name="requestDTO">The data for the new request.</param>
         /// <returns>The result of the request addition operation.</returns>
         [HttpPost]
-        public IActionResult AddRequest([FromBody] RequestDTO requestDTO)
+        public IActionResult AddRequest([FromForm] RequestDTO requestDTO)
         {
             _logger.LogInformation("Adding a request.");
 
@@ -93,7 +93,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// <param name="requestDTO">The data for updating the request.</param>
         /// <returns>The result of the request update operation.</returns>
         [HttpPut]
-        public IActionResult UpdateRequest([FromBody] RequestDTO requestDTO)
+        public IActionResult UpdateRequest([FromForm] RequestDTO requestDTO)
         {
             _logger.LogInformation($"Updating request with ID {requestDTO.RequestId}.");
 
@@ -175,34 +175,6 @@ namespace ReimbursementTrackerApp.Controllers
             }
         }
         /// <summary>
-        /// Updates the status of a request by ID.
-        /// </summary>
-        /// <param name="requestId">The ID of the request to update the status for.</param>
-        /// <param name="trackingStatus">The new status for the request.</param>
-        /// <returns>The result of the request status update operation.</returns>
-        [HttpPut("{requestId}/{trackingStatus}")]
-        public IActionResult UpdateRequestStatus(int requestId, string trackingStatus)
-        {
-            _logger.LogInformation($"Updating request status with ID {requestId} to {trackingStatus}.");
-
-            try
-            {
-                var result = _requestService.Update(requestId, trackingStatus);
-                return Ok(result);
-            }
-            catch (RequestNotFoundException ex)
-            {
-                _logger.LogError(ex, $"Failed to update request status.");
-                return NotFound($"Failed to update request status. {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error updating request status.");
-                return StatusCode(500, "Internal server error");
-            }
-        }
-
-        /// <summary>
         /// Gets a request by expense category.
         /// </summary>
         /// <param name="expenseCategory">The expense category of the request.</param>
@@ -215,7 +187,7 @@ namespace ReimbursementTrackerApp.Controllers
 
             try
             {
-                var requestDTO = _requestService.GetRequestByCategory(expenseCategory);
+                var requestDTO = _requestService.GetRequestsByCategory(expenseCategory);
 
                 if (requestDTO != null)
                 {

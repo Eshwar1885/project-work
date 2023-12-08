@@ -757,3 +757,4 @@ C:\Users\himac\OneDrive\Desktop\project\ReimbursementTrackerSolution\Reimburseme
 C:\Users\himac\OneDrive\Desktop\project\ReimbursementTrackerSolution\ReimbursementTrackerApp\obj\Debug\net6.0\ReimbursementTrackerApp.pdb
 C:\Users\himac\OneDrive\Desktop\project\ReimbursementTrackerSolution\ReimbursementTrackerApp\obj\Debug\net6.0\ReimbursementTrackerApp.genruntimeconfig.cache
 C:\Users\himac\OneDrive\Desktop\project\ReimbursementTrackerSolution\ReimbursementTrackerApp\obj\Debug\net6.0\ref\ReimbursementTrackerApp.dll
+C:\Users\himac\OneDrive\Desktop\project\ReimbursementTrackerSolution\ReimbursementTrackerApp\bin\Debug\net6.0\ReimbursementTrackerApp.staticwebassets.runtime.json
