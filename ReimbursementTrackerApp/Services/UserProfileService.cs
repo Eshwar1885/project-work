@@ -137,7 +137,7 @@ namespace ReimbursementTrackerApp.Services
         /// </summary>
         /// <param name="username">The username associated with the user profile to retrieve.</param>
         /// <returns>Returns the UserProfileDTO if the user profile is found; otherwise, throws a UserProfileNotFoundException.</returns>
-        public UserProfileDTO GetUserProifleByUsername(string username)
+        public UserProfileDTO GetUserProfileByUsername(string username)
         {
             var userProfile = _userProfileRepository.GetAll()
                 .FirstOrDefault(u => u.Username == username);

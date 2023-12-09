@@ -35,6 +35,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// </summary>
         /// <param name="paymentDetailsDTO">The payment details DTO.</param>
         /// <returns>Returns the result of the operation.</returns>
+        [Authorize(Roles = "HR")]
         [HttpPost]
         public IActionResult AddPaymentDetails([FromBody] PaymentDetailsDTO paymentDetailsDTO)
         {
@@ -62,6 +63,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// </summary>
         /// <param name="paymentId">The ID of the payment details to be removed.</param>
         /// <returns>Returns the result of the operation.</returns>
+        [Authorize(Roles = "HR")]
         [HttpDelete("{paymentId}")]
         public ActionResult RemovePaymentDetails(int paymentId)
         {
@@ -96,40 +98,41 @@ namespace ReimbursementTrackerApp.Controllers
         /// </summary>
         /// <param name="paymentDetailsDTO">The updated payment details DTO.</param>
         /// <returns>Returns the result of the operation.</returns>
-        [HttpPut]
-        public IActionResult UpdatePaymentDetails([FromBody] PaymentDetailsDTO paymentDetailsDTO)
-        {
-            _logger.LogInformation($"Updating payment details for ID {paymentDetailsDTO.PaymentId}.");
+        //[HttpPut]
+        //public IActionResult UpdatePaymentDetails([FromBody] PaymentDetailsDTO paymentDetailsDTO)
+        //{
+        //    _logger.LogInformation($"Updating payment details for ID {paymentDetailsDTO.PaymentId}.");
 
-            try
-            {
-                var result = _paymentDetailsService.Update(paymentDetailsDTO);
+        //    try
+        //    {
+        //        var result = _paymentDetailsService.Update(paymentDetailsDTO);
 
-                if (result != null)
-                {
-                    _logger.LogInformation("Payment details updated successfully");
-                    return Ok(result);
-                }
+        //        if (result != null)
+        //        {
+        //            _logger.LogInformation("Payment details updated successfully");
+        //            return Ok(result);
+        //        }
 
-                return NotFound("Payment details not found");
-            }
-            catch (PaymentDetailsNotFoundException ex)
-            {
-                _logger.LogError(ex, $"Failed to update payment details.");
-                return NotFound($"Failed to update payment details. {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error updating payment details.");
-                return StatusCode(500, "Internal server error");
-            }
-        }
+        //        return NotFound("Payment details not found");
+        //    }
+        //    catch (PaymentDetailsNotFoundException ex)
+        //    {
+        //        _logger.LogError(ex, $"Failed to update payment details.");
+        //        return NotFound($"Failed to update payment details. {ex.Message}");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(ex, "Error updating payment details.");
+        //        return StatusCode(500, "Internal server error");
+        //    }
+        //}
 
         /// <summary>
         /// Gets payment details by ID.
         /// </summary>
         /// <param name="paymentId">The ID of the payment details to be retrieved.</param>
         /// <returns>Returns the payment details DTO if found; otherwise, returns an error message.</returns>
+        [Authorize(Roles = "HR")]
         [HttpGet("{paymentId}")]
         public IActionResult GetPaymentDetailsById(int paymentId)
         {
@@ -163,6 +166,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// Gets all payment details.
         /// </summary>
         /// <returns>Returns a list of payment details DTOs if available; otherwise, returns an error message.</returns>
+        [Authorize(Roles ="HR")]
         [HttpGet]
         public IActionResult GetAllPaymentDetails()
         {

@@ -106,7 +106,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// </summary>
         /// <param name="trackingDTO">The data for updating tracking information.</param>
         /// <returns>The result of the tracking update operation.</returns>
-
+        [Authorize(Roles = "HR")]
         [HttpPut]
         public IActionResult UpdateTracking([FromBody] TrackingDTO trackingDTO)
         {
@@ -145,7 +145,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// </summary>
         /// <param name="trackingId">The ID of the tracking information to be retrieved.</param>
         /// <returns>The result of the tracking retrieval operation.</returns>
-
+        [Authorize(Roles = "HR")]
         [HttpGet("{trackingId}")]
         public IActionResult GetTrackingById(int trackingId)
         {

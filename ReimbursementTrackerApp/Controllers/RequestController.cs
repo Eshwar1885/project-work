@@ -33,6 +33,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// </summary>
         /// <param name="requestDTO">The data for the new request.</param>
         /// <returns>The result of the request addition operation.</returns>
+        [Authorize(Roles = "Employee")]
         [HttpPost]
         public IActionResult AddRequest([FromForm] RequestDTO requestDTO)
         {
@@ -59,6 +60,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// </summary>
         /// <param name="requestId">The ID of the request to be removed.</param>
         /// <returns>The result of the request removal operation.</returns>
+        [Authorize(Roles = "Employee")]
         [HttpDelete("{requestId}")]
         public ActionResult RemoveRequest(int requestId)
         {
@@ -92,6 +94,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// </summary>
         /// <param name="requestDTO">The data for updating the request.</param>
         /// <returns>The result of the request update operation.</returns>
+        [Authorize(Roles = "Employee")]
         [HttpPut]
         public IActionResult UpdateRequest([FromForm] RequestDTO requestDTO)
         {
@@ -125,6 +128,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// </summary>
         /// <param name="requestId">The ID of the request to be retrieved.</param>
         /// <returns>The result of the request retrieval operation.</returns>
+        [Authorize(Roles = "Employee")]
         [HttpGet("{requestId}")]
         public IActionResult GetRequestById(int requestId)
         {
@@ -157,6 +161,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// Gets all requests.
         /// </summary>
         /// <returns>The result of the operation to get all requests.</returns>
+        [Authorize(Roles = "HR")]
         [HttpGet]
         public IActionResult GetAllRequests()
         {
@@ -179,7 +184,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// </summary>
         /// <param name="expenseCategory">The expense category of the request.</param>
         /// <returns>The result of the request retrieval by category operation.</returns>
-
+        [Authorize(Roles = "HR")]
         [HttpGet("category/{expenseCategory}")]
         public IActionResult GetRequestByCategory(string expenseCategory)
         {
@@ -213,6 +218,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// </summary>
         /// <param name="username">The username associated with the requests.</param>
         /// <returns>The result of the requests retrieval by username operation.</returns>
+        [Authorize(Roles = "Employee")]
         [HttpGet("user/{username}")]
         public IActionResult GetRequestByUsername(string username)
         {

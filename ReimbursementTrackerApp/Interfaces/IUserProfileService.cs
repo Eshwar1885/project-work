@@ -41,7 +41,7 @@ namespace ReimbursementTrackerApp.Interfaces
         /// </summary>
         /// <param name="username">The username of the user profile to retrieve.</param>
         /// <returns>The UserProfileDTO representing the user profile with the specified username.</returns>
-        UserProfileDTO GetUserProifleByUsername(string username);
+        UserProfileDTO GetUserProfileByUsername(string username);
 
         /// <summary>
         /// Gets all user profiles.
