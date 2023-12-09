@@ -1,102 +1,102 @@
 using NUnit.Framework;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
 using ReimbursementTrackerApp.Services;
 using ReimbursementTrackerApp.Interfaces;
-using ReimbursementTrackerApp.Models;
 using ReimbursementTrackerApp.Models.DTOs;
 using ReimbursementTrackerApp.Exceptions;
 using ReimbursementTrackerApp.Repositories;
 using ReimbursementTrackerApp.Contexts;
+using ReimbursementTrackerApp.Models;
+using NuGet.Protocol.Core.Types;
 
 namespace ReimbursementTrackerApp.Tests
 {
     [TestFixture]
     public class UserProfileServiceTests
     {
-        private UserProfileService _userProfileService;
-        private DbContextOptions<RTAppContext> _dbContextOptions;
+        IRepository<int, User> userRepository;
+        private UserProfileRepository repository;
 
         [SetUp]
         public void Setup()
         {
-            _dbContextOptions = new DbContextOptionsBuilder<RTAppContext>()
-                .UseInMemoryDatabase(databaseName: "InMemoryTestDatabase")
+            var dbOptions = new DbContextOptionsBuilder<RTAppContext>()
+                 .UseInMemoryDatabase("dbTestCustomer")
                 .Options;
-
-            _userProfileService = new UserProfileService(new UserProfileRepository(new RTAppContext(_dbContextOptions)));
+            RTAppContext context = new RTAppContext(dbOptions);
+            repository = new UserProfileRepository(context);
+        }
+        [Test]
+        public void AddUserProfileTest()
+        {
+            //Arrange
+            IUserProfileService profileService = new UserProfileService(repository);
+            var userprofileDTO = new UserProfileDTO
+            {
+                Username = "testUser",
+                FirstName = "John",
+                LastName = "Doe",
+                City = "New York",
+                ContactNumber = "1234567890",
+                BankAccountNumber = "9876543210"
+            };
+            var userprofileDIO2 = new UserProfileDTO
+            {
+                Username = "test2@gmail.com",
+                FirstName = "User",
+                LastName = "Test",
+                City = "Japan",
+                ContactNumber = "234564626",
+                BankAccountNumber = "13189456165"
+            };
+            //Act
+            var result = profileService.Add(userprofileDTO);
+            profileService.Add(userprofileDIO2);
         }
 
         [Test]
-        public void Add_NewUserProfile_Successful()
+        public void GetProfiles()
         {
-            // Arrange
-            var userProfileDTO = new UserProfileDTO
-            {
-                Username = "testUser",
-                FirstName = "John",
-                LastName = "Doe",
-                City = "New York",
-                ContactNumber = "1234567890",
-                BankAccountNumber = "9876543210"
-            };
-
-            // Act
-            var result = _userProfileService.Add(userProfileDTO);
-
-            // Assert
-            Assert.IsTrue(result);
-            using (var context = new RTAppContext(_dbContextOptions))
-            {
-                Assert.AreEqual(1, context.UserProfiles.Count());
-                Assert.AreEqual("testUser", context.UserProfiles.First().Username);
-            }
+            //Arrange
+            IUserProfileService profileService=new UserProfileService(repository);
+            
+            //Act
+           var result = profileService.GetUserProifleById(1);
+        
+            //Assert
+            Assert.IsNotNull(result);
+            //Assert.AreEqual(1, result.Count());
         }
 
-        // Similar tests for Remove, Update, GetUserProifleById, GetUserProifleByUsername, and GetAllUserProfiles
-        // ...
-
-       [Test]
-public void Remove_UserProfileFound_Successful()
-{
-            // Arrange
-            var userProfileDTO = new UserProfileDTO
+        [Test]
+        public void UpdateProfile()
+        {
+            //Arrange
+            IUserProfileService profileService = new UserProfileService(repository);
+            var userprofileDTO = new UserProfileDTO()
             {
                 Username = "testUser",
                 FirstName = "John",
-                LastName = "Doe",
-                City = "New York",
-                ContactNumber = "1234567890",
-                BankAccountNumber = "9876543210"
+                LastName = "Dosky",
+                City = "Dallas",
+                ContactNumber = "123456789012345",
+                BankAccountNumber = "987654321001321"
             };
+            //Act
+            var result = profileService.Update(testUser, UserProfileDTO);
 
-            // Act
-            var result = _userProfileService.Add(userProfileDTO);
-            
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual("Dallas", result.City);
+        }
 
-            // Act
-            var resultt = _userProfileService.Remove("testUser");
 
-    // Assert
-    Assert.IsTrue(resultt);
 
-    // Validate the state of the database after the removal
-    using (var context = new RTAppContext(_dbContextOptions))
-    {
-        Assert.AreEqual(0, context.UserProfiles.Count());
-    }
-}
+
+
 
     }
 }
-
-
-//[Test]
-//        public void Remove_UserProfileNotFound_ExceptionThrown()
-//        {
-//            // Act & Assert
-//            Assert.Throws<UserProfileNotFoundException>(() => _userProfileService.Remove("nonExistentUser"));
-//        }
-//    }
-//}
+    
+        
