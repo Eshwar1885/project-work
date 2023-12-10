@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kZf1TZFKAvhRXBxHyo4uS3ZuX1xDhwjT17EfsTVZzjE=",
+  "Hash": "Klp8y094pxe75az8g4K+BLdJ+7t0loA6g9+UWtU0mr4=",
   "Source": "ReimbursementTrackerApp",
   "BasePath": "_content/ReimbursementTrackerApp",
   "Mode": "Default",
@@ -15,40 +15,5 @@
       "Pattern": "**"
     }
   ],
-  "Assets": [
-    {
-      "Identity": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\wwwroot\\Images\\88d82560-e2ba-478f-aa31-f864330e6794_ASP.net modified.docx",
-      "SourceId": "ReimbursementTrackerApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\wwwroot\\",
-      "BasePath": "_content/ReimbursementTrackerApp",
-      "RelativePath": "Images/88d82560-e2ba-478f-aa31-f864330e6794_ASP.net modified.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\88d82560-e2ba-478f-aa31-f864330e6794_ASP.net modified.docx"
-    },
-    {
-      "Identity": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\wwwroot\\Images\\97afa135-0986-4f03-9627-4055f1a79a63_Himacharan-mandatorydocs.pdf",
-      "SourceId": "ReimbursementTrackerApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\wwwroot\\",
-      "BasePath": "_content/ReimbursementTrackerApp",
-      "RelativePath": "Images/97afa135-0986-4f03-9627-4055f1a79a63_Himacharan-mandatorydocs.pdf",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\97afa135-0986-4f03-9627-4055f1a79a63_Himacharan-mandatorydocs.pdf"
-    }
-  ]
+  "Assets": []
 }

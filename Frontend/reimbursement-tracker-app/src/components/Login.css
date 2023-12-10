@@ -89,6 +89,8 @@ select {
   text-decoration: underline;
 }
 
+
+
 /* Responsive styles */
 @media (max-width: 768px) {
   .loginBox {
