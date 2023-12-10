@@ -30,9 +30,7 @@ namespace ReimbursementTrackerApp.Repositories
         /// <returns>Returns the payment details entity if found; otherwise, returns null.</returns>
         public PaymentDetails GetById(int paymentId)
         {
-            return _context.PaymentDetails
-                .Include(pd => pd.Request)
-                .FirstOrDefault(pd => pd.PaymentId == paymentId);
+            return _context.PaymentDetails.FirstOrDefault(pd => pd.PaymentId == paymentId);
         }
 
         /// <summary>
@@ -41,9 +39,7 @@ namespace ReimbursementTrackerApp.Repositories
         /// <returns>Returns a list of payment details entities.</returns>
         public IList<PaymentDetails> GetAll()
         {
-            return _context.PaymentDetails
-                .Include(pd => pd.Request)
-                .ToList();
+            return _context.PaymentDetails.ToList();
         }
 
         /// <summary>

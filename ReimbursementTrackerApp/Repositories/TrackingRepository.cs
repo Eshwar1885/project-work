@@ -30,9 +30,7 @@ namespace ReimbursementTrackerApp.Repositories
         /// <returns>Returns the tracking entity if found; otherwise, returns null.</returns>
         public Tracking GetById(int trackingId)
         {
-            return _context.Trackings
-                .Include(t => t.Request)
-                .FirstOrDefault(t => t.TrackingId == trackingId);
+            return _context.Trackings.FirstOrDefault(t => t.TrackingId == trackingId);
         }
 
         /// <summary>
@@ -41,9 +39,7 @@ namespace ReimbursementTrackerApp.Repositories
         /// <returns>Returns a list of tracking entities.</returns>
         public IList<Tracking> GetAll()
         {
-            return _context.Trackings
-                .Include(t => t.Request)
-                .ToList();
+            return _context.Trackings.ToList();
         }
 
         /// <summary>

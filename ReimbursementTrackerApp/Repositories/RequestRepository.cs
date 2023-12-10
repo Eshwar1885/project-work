@@ -30,9 +30,7 @@ namespace ReimbursementTrackerApp.Repositories
         /// <returns>Returns the request entity if found; otherwise, returns null.</returns>
         public Request GetById(int requestId)
         {
-            return _context.Requests
-                .Include(r => r.User)
-                .FirstOrDefault(r => r.RequestId == requestId);
+            return _context.Requests.FirstOrDefault(r => r.RequestId == requestId);
         }
 
         /// <summary>
@@ -41,9 +39,7 @@ namespace ReimbursementTrackerApp.Repositories
         /// <returns>Returns a list of request entities.</returns>
         public IList<Request> GetAll()
         {
-            return _context.Requests
-                .Include(r => r.User)
-                .ToList();
+            return _context.Requests.ToList();
         }
 
         /// <summary>

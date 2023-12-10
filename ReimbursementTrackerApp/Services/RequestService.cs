@@ -9,58 +9,50 @@ namespace ReimbursementTrackerApp.Services
     {
         private readonly IRepository<int, Request> _requestRepository;
         private readonly IRepository<int, Tracking> _trackingRepository;
-        private readonly IRepository<string, User> _userRepository;
+     //   private readonly IRepository<string, User> _userRepository;
         private readonly IWebHostEnvironment _hostingEnvironment;
 
         public RequestService(
             IRepository<int, Request> requestRepository,
             IRepository<int, Tracking> trackingRepository,
-            IRepository<string, User> userRepository,
+       //     IRepository<string, User> userRepository,
             IWebHostEnvironment hostingEnvironment)
         {
             _requestRepository = requestRepository;
             _trackingRepository = trackingRepository;
-            _userRepository = userRepository;
+       //     _userRepository = userRepository;
             _hostingEnvironment = hostingEnvironment; // Assign IWebHostEnvironment
         }
 
 
         public bool Add(RequestDTO requestDTO)
         {
-            var user = _userRepository.GetAll()
-                .FirstOrDefault(r => r.Username == requestDTO.Username);
+            // Handle file upload separately
+            var documentPath = SaveDocument(requestDTO.Document);
 
-            if (user != null)
+            var request = new Request
             {
-                // Handle file upload separately
-                var documentPath = SaveDocument(requestDTO.Document);
+                ExpenseCategory = requestDTO.ExpenseCategory,
+                Amount = requestDTO.Amount,
+                Document = documentPath,
+                Description = requestDTO.Description,
+                RequestDate = DateTime.Now,
+                Username = requestDTO.Username
+            };
 
-                var request = new Request
-                {
-                    ExpenseCategory = requestDTO.ExpenseCategory,
-                    Amount = requestDTO.Amount,
-                    Document = documentPath,
-                    Description = requestDTO.Description,
-                    RequestDate = DateTime.Now,
-                    Username = requestDTO.Username
-                };
+            _requestRepository.Add(request);
 
-                _requestRepository.Add(request);
+            var tracking = new Tracking
+            {
+                TrackingStatus = "Pending",
+                ApprovalDate = null,
+                ReimbursementDate = null,
+                Request = request
+            };
 
-                var tracking = new Tracking
-                {
-                    TrackingStatus = "Pending",
-                    ApprovalDate = null,
-                    ReimbursementDate = null,
-                    Request = request
-                };
+            _trackingRepository.Add(tracking);
 
-                _trackingRepository.Add(tracking);
-
-                return true;
-            }
-
-            throw new UserNotFoundException();
+            return true;
         }
 
 
@@ -68,7 +60,7 @@ namespace ReimbursementTrackerApp.Services
         {
             if (document != null && document.Length > 0)
             {
-                var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "Images");
+                var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "Documents");
                 var uniqueFileName = Guid.NewGuid().ToString() + "_" + document.FileName;
                 var filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
@@ -77,7 +69,7 @@ namespace ReimbursementTrackerApp.Services
                     document.CopyTo(stream);
                 }
 
-                return "https://localhost:7007/Images/" + uniqueFileName;
+                return "https://localhost:7007/Documents/" + uniqueFileName;
             }
 
             return null;
@@ -121,7 +113,7 @@ namespace ReimbursementTrackerApp.Services
                                             requestDTO.Document.CopyTo(stream);
                                         }*/
 
-                    //existingRequest.Document = "https://localhost:7007/Images/" + requestDTO.Document.FileName; // Adjust the path
+                    //existingRequest.Document = "https://localhost:7007/Documents/" + requestDTO.Document.FileName; // Adjust the path
                 }
 
                 _requestRepository.Update(existingRequest);
@@ -240,10 +232,6 @@ namespace ReimbursementTrackerApp.Services
 
             return null;
         }
-
-
-
-        // Helper method to retrieve image as base64
 
     }
 }
