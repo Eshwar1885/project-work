@@ -15,6 +15,7 @@ import Home from './components/Home';
 import UserRequests from './components/UserRequests';
 import React from 'react';
 import axios from 'axios';
+import Tracking from './components/Tracking';
 
 
 const access_token = localStorage.getItem("token");
@@ -38,6 +39,7 @@ function App() {
           <Route path="/AddPayment" element={<AddPayment/>}/>
           <Route path="/GetPayments" element={<GetPayments/>}/>
           <Route path="/UserRequests" element={<UserRequests/>}/>
+          <Route path="/Tracking" element={<Tracking/>}/>
 
         </Routes>
       </BrowserRouter>

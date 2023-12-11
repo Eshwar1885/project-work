@@ -96,36 +96,36 @@ namespace ReimbursementTrackerApp.Controllers
         /// <summary>
         /// Updates payment details.
         /// </summary>
-        /// <param name="paymentDetailsDTO">The updated payment details DTO.</param>
+        /// <param name = "paymentDetailsDTO" > The updated payment details DTO.</param>
         /// <returns>Returns the result of the operation.</returns>
-        //[HttpPut]
-        //public IActionResult UpdatePaymentDetails([FromBody] PaymentDetailsDTO paymentDetailsDTO)
-        //{
-        //    _logger.LogInformation($"Updating payment details for ID {paymentDetailsDTO.PaymentId}.");
+        [HttpPut]
+        public IActionResult UpdatePaymentDetails([FromBody] PaymentDetailsDTO paymentDetailsDTO)
+        {
+            _logger.LogInformation($"Updating payment details for ID {paymentDetailsDTO.PaymentId}.");
 
-        //    try
-        //    {
-        //        var result = _paymentDetailsService.Update(paymentDetailsDTO);
+            try
+            {
+                var result = _paymentDetailsService.Update(paymentDetailsDTO);
 
-        //        if (result != null)
-        //        {
-        //            _logger.LogInformation("Payment details updated successfully");
-        //            return Ok(result);
-        //        }
+                if (result != null)
+                {
+                    _logger.LogInformation("Payment details updated successfully");
+                    return Ok(result);
+                }
 
-        //        return NotFound("Payment details not found");
-        //    }
-        //    catch (PaymentDetailsNotFoundException ex)
-        //    {
-        //        _logger.LogError(ex, $"Failed to update payment details.");
-        //        return NotFound($"Failed to update payment details. {ex.Message}");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex, "Error updating payment details.");
-        //        return StatusCode(500, "Internal server error");
-        //    }
-        //}
+                return NotFound("Payment details not found");
+            }
+            catch (PaymentDetailsNotFoundException ex)
+            {
+                _logger.LogError(ex, $"Failed to update payment details.");
+                return NotFound($"Failed to update payment details. {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating payment details.");
+                return StatusCode(500, "Internal server error");
+            }
+        }
 
         /// <summary>
         /// Gets payment details by ID.

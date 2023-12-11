@@ -33,7 +33,7 @@ namespace ReimbursementTrackerApp.Tests
 
             RTAppContext context = new RTAppContext(dbOptions);
             trackingRepository = new TrackingRepository(context);
-            trackingService = new TrackingService(trackingRepository);
+            trackingService = new TrackingService(trackingRepository, requestRepository);
 
             requestRepository = new RequestRepository(context);
             requestService = new RequestService(requestRepository, trackingRepository, hostingEnvironment);

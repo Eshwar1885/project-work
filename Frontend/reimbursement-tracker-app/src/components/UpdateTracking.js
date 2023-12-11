@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Requests.css';
 import { message } from "antd";
 
-const UpdateTracking = ({ requestId, trackingDetails, onUpdateTracking, onClose }) => {
+const UpdateTracking = ({ requestId, trackingDetails, onUpdateTracking, onClose, username }) => {
   const [trackingStatus, setTrackingStatus] = useState(trackingDetails.trackingStatus || '');
   const [approvalDate, setApprovalDate] = useState(trackingDetails.approvalDate || '');
   const [reimbursementDate, setReimbursementDate] = useState(trackingDetails.reimbursementDate || '');
@@ -17,9 +17,8 @@ const UpdateTracking = ({ requestId, trackingDetails, onUpdateTracking, onClose 
       approvalDate: approvalDate,
       reimbursementDate: reimbursementDate,
     };
-
-
-    const email=String(localStorage.getItem("username"));
+    localStorage.setItem('Trackusername', username);
+    const email = String(localStorage.getItem("Trackusername")) || username;
 
     const sendEmail = async () => {
       try {
@@ -36,7 +35,9 @@ const UpdateTracking = ({ requestId, trackingDetails, onUpdateTracking, onClose 
             user_id: 'yKBDhfI1SwLvmocO0',
             template_params: {
               to_email: email,
-              message: "Dear Employee, your request status is "+trackingStatus,
+              message: `Dear ${username},\n\nWe are pleased to inform you that your reimbursement request with Request ID ${requestId}
+               has been ${trackingStatus.toLowerCase()}.\n\nApproval Date: ${approvalDate}\nReimbursement Date: ${reimbursementDate}\n
+               \nThank you for your prompt attention to this matter.`,
               'g-recaptcha-response': '03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd...',
             },
           }),
@@ -96,7 +97,7 @@ const UpdateTracking = ({ requestId, trackingDetails, onUpdateTracking, onClose 
       <label>
         Approval Date:
         <input
-          type="date"
+           type="datetime-local"
           name="approvalDate"
           value={approvalDate}
           onChange={(e) => setApprovalDate(e.target.value)}
@@ -106,7 +107,7 @@ const UpdateTracking = ({ requestId, trackingDetails, onUpdateTracking, onClose 
       <label>
         Reimbursement Date:
         <input
-          type="date"
+          type="datetime-local"
           name="reimbursementDate"
           value={reimbursementDate}
           onChange={(e) => setReimbursementDate(e.target.value)}
