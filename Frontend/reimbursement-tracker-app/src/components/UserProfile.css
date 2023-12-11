@@ -1,4 +1,7 @@
 /* Common styles for all screens */
+body{
+    height: 100Vh;
+}
 .userProfileContainer {
     display: flex;
     flex-direction: column;
@@ -28,7 +31,7 @@
 }
 .button {
     cursor: pointer;
-    padding: 10px 20px;
+    padding: 10px 25px;
     border-radius: 8px;
     width: auto; /* Allow the button to take its natural width */
 }

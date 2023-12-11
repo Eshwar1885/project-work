@@ -1,5 +1,7 @@
 /* AddProfile.css */
-
+body{
+  height: 100vh;
+}
 .addProfileContainer {
   display: flex;
   flex-direction: column;

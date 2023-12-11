@@ -1,6 +1,6 @@
 body {
   background-image: url('https://wallpapercave.com/wp/wp7121313.jpg');
-  background-size: cover;
+  background-size:inherit;
   background-repeat: no-repeat;
   background-position: fixed;
   margin: 0;

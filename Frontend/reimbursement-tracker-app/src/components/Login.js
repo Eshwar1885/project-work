@@ -103,10 +103,10 @@ const Login = () => {
                     )}
 
                     <div className="form-group mt-3">
-                        <button className="btn btn-primary button-primary" onClick={login}>
+                        <button className="button button-primary" onClick={login}>
                             Login
                         </button>
-                        <button className="btn btn-danger button button-danger ml-2">Cancel</button>
+                        <button className="btn-danger button">Cancel</button>
                     </div>
                     
                     <div className="signup-link">
