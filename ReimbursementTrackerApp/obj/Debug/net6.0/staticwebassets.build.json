@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ad253tGIW8YsqjRIx7CWWTZdCckvOBJC/cLPVu4qmnE=",
+  "Hash": "HuUmXuZihdwGB8CtQ+HWgd4c1d2CIEYpy2x3bQTx308=",
   "Source": "ReimbursementTrackerApp",
   "BasePath": "_content/ReimbursementTrackerApp",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\wwwroot\\Documents\\f4c85602-a286-4832-ab3d-0d3ff03fc066_Screenshot (604).png",
+      "SourceId": "ReimbursementTrackerApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\wwwroot\\",
+      "BasePath": "_content/ReimbursementTrackerApp",
+      "RelativePath": "Documents/f4c85602-a286-4832-ab3d-0d3ff03fc066_Screenshot (604).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Documents\\f4c85602-a286-4832-ab3d-0d3ff03fc066_Screenshot (604).png"
+    },
     {
       "Identity": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\wwwroot\\Documents\\fa55794d-5bcc-47c7-93e0-6a9e44274519_IMG_20231106_144230.jpg",
       "SourceId": "ReimbursementTrackerApp",

@@ -1,5 +1,21 @@
 ﻿<Project>
   <ItemGroup>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Documents\f4c85602-a286-4832-ab3d-0d3ff03fc066_Screenshot (604).png))">
+      <SourceType>Package</SourceType>
+      <SourceId>ReimbursementTrackerApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/ReimbursementTrackerApp</BasePath>
+      <RelativePath>Documents/f4c85602-a286-4832-ab3d-0d3ff03fc066_Screenshot (604).png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Documents\f4c85602-a286-4832-ab3d-0d3ff03fc066_Screenshot (604).png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Documents\fa55794d-5bcc-47c7-93e0-6a9e44274519_IMG_20231106_144230.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>ReimbursementTrackerApp</SourceId>
