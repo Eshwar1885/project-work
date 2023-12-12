@@ -45,6 +45,11 @@ body{
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+.invalid-feedback {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
 
 .error {
   color: red;

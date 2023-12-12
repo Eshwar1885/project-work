@@ -47,7 +47,7 @@ tbody tr:hover {
   }
 
   .userProfilesTable th {
-    display:flex; /* Hide table headers in small screens */
+    display:none; /* Hide table headers in small screens */
   }
 
   .userProfilesTable td {
