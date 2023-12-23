@@ -146,11 +146,25 @@ namespace ReimbursementTrackerApp.Services
                 PaymentId = pd.PaymentId,
                 RequestId = pd.RequestId,
                 PaymentAmount = pd.PaymentAmount,
-                CardNumber = pd.CardNumber,
+                CardNumber = MaskCreditCard(pd.CardNumber), // Mask the credit card number
                 ExpiryDate = pd.ExpiryDate,
-                CVV = pd.CVV,
+                CVV = MaskCVV(pd.CVV), // Mask the CVV
                 PaymentDate = pd.PaymentDate
             });
+        }
+        private string MaskCreditCard(string creditCardNumber)
+        {
+            // Implement your masking logic here (show only the last 4 digits, for example)
+            // This is a simplified example, you might want to use a more secure masking method
+            return "**** **** **** " + creditCardNumber.Substring(creditCardNumber.Length - 4);
+        }
+
+        // Helper method to mask the CVV
+        private string MaskCVV(string cvv)
+        {
+            // Implement your masking logic for CVV (show only a portion)
+            // This is a simplified example, you might want to use a more secure masking method
+            return "***";
         }
     }
 }

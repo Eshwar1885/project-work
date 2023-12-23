@@ -4,7 +4,7 @@ import './AddPayments.css';
 
 const AddPayment = () => {
   const [paymentData, setPaymentData] = useState({
-    RequestId: 0,
+    Username: '',
     CardNumber: '',
     ExpiryDate: '',
     CVV: '',
@@ -24,8 +24,8 @@ const AddPayment = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!paymentData.RequestId || paymentData.RequestId <= 0) {
-      newErrors.RequestId = 'Please enter a valid Request ID.';
+    if (!paymentData.Username.trim()) {
+      newErrors.Username = 'Please enter a valid Username.';
     }
 
     if (!paymentData.CardNumber.trim()) {
@@ -65,6 +65,10 @@ const AddPayment = () => {
 
       console.log('Payment added successfully:', response.data);
       alert('Payment added successfully');
+
+      // Add RequestId and PaymentId to local storage
+      localStorage.setItem('RequestId', response.data.RequestId);
+      localStorage.setItem('PaymentId', response.data.PaymentId);
     } catch (error) {
       console.error('Error adding payment:', error.response?.data);
       alert('Failed to add payment. Please try again.');
@@ -77,15 +81,15 @@ const AddPayment = () => {
       <div className='form-wrapper'>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="RequestId">Request ID:</label>
+            <label htmlFor="Username">Username:</label>
             <input
-              type="number"
-              id="RequestId"
-              name="RequestId"
-              value={paymentData.RequestId}
+              type="text"
+              id="Username"
+              name="Username"
+              value={paymentData.Username}
               onChange={handleInputChange}
             />
-            {errors.RequestId && <div className="error">{errors.RequestId}</div>}
+            {errors.Username && <div className="error">{errors.Username}</div>}
           </div>
 
           <div>

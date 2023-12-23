@@ -11313,11 +11313,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\ReimbursementTrackerApp.csproj",
+      "projectUniqueName": "H:\\Hexaware .net+react\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\ReimbursementTrackerApp.csproj",
       "projectName": "ReimbursementTrackerApp",
-      "projectPath": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\ReimbursementTrackerApp.csproj",
+      "projectPath": "H:\\Hexaware .net+react\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\ReimbursementTrackerApp.csproj",
       "packagesPath": "C:\\Users\\himac\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\obj\\",
+      "outputPath": "H:\\Hexaware .net+react\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\himac\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -11392,7 +11392,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

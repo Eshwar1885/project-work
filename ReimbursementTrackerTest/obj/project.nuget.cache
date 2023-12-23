@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RgZHOtwFhFlnIfRwyfoF9grWLBh3ZBJ43fIZcbR1Z9Emyvuy7tD3wq14PVYB43NJt5hJjT2t9vD/YtRmgWUPlQ==",
+  "dgSpecHash": "nABrGFGq9vSBXIfg6fQP5g8ToCPOHZ9701R5950HiHhvLjhzzojqyE+SBirgPeUrO8qvJz7puaFAZ29MBnE3oA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerTest\\ReimbursementTrackerTest.csproj",
+  "projectFilePath": "H:\\Hexaware .net+react\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerTest\\ReimbursementTrackerTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\himac\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
     "C:\\Users\\himac\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
@@ -190,7 +190,10 @@
     "C:\\Users\\himac\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\himac\\.nuget\\packages\\system.threading.tasks.dataflow\\6.0.0\\system.threading.tasks.dataflow.6.0.0.nupkg.sha512",
     "C:\\Users\\himac\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\himac\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\himac\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\himac\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\himac\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\himac\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512"
   ],
   "logs": []
 }

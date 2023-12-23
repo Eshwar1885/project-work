@@ -16,5 +16,5 @@ namespace ReimbursementTrackerApp.Models
         [ForeignKey("RequestId")]
         public Request? Request { get; set; }
     }
-      
+
 }

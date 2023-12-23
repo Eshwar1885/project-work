@@ -9469,11 +9469,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerTest\\ReimbursementTrackerTest.csproj",
+      "projectUniqueName": "H:\\Hexaware .net+react\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerTest\\ReimbursementTrackerTest.csproj",
       "projectName": "ReimbursementTrackerTest",
-      "projectPath": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerTest\\ReimbursementTrackerTest.csproj",
+      "projectPath": "H:\\Hexaware .net+react\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerTest\\ReimbursementTrackerTest.csproj",
       "packagesPath": "C:\\Users\\himac\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerTest\\obj\\",
+      "outputPath": "H:\\Hexaware .net+react\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\himac\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9490,8 +9490,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\ReimbursementTrackerApp.csproj": {
-              "projectPath": "C:\\Users\\himac\\OneDrive\\Desktop\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\ReimbursementTrackerApp.csproj"
+            "H:\\Hexaware .net+react\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\ReimbursementTrackerApp.csproj": {
+              "projectPath": "H:\\Hexaware .net+react\\project\\ReimbursementTrackerSolution\\ReimbursementTrackerApp\\ReimbursementTrackerApp.csproj"
             }
           }
         }
@@ -9542,12 +9542,26 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.25, 6.0.25]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.25, 6.0.25]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.25, 6.0.25]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

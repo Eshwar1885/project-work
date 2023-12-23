@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './UserProfiles.css'; // Import the CSS file
+import './UserProfiles.css';
 
 const UserProfiles = () => {
   const [userProfiles, setUserProfiles] = useState([]);
@@ -20,6 +20,21 @@ const UserProfiles = () => {
     fetchUserProfiles();
   }, []);
 
+  const handleDelete = async (username) => {
+    const confirmDelete = window.confirm(`Are you sure you want to delete the profile for ${username}?`);
+
+    if (confirmDelete) {
+      try {
+        await axios.delete(`https://localhost:7007/api/UserProfile/${username}`);
+        // If deletion is successful, update the userProfiles state to reflect the changes
+        setUserProfiles((prevProfiles) => prevProfiles.filter((profile) => profile.username !== username));
+      } catch (error) {
+        console.error('Error deleting user profile:', error);
+        // Handle error, e.g., show an error message
+      }
+    }
+  };
+
   return (
     <div className="userProfilesContainer">
       <h2>User Profiles</h2>
@@ -35,6 +50,7 @@ const UserProfiles = () => {
             <th>City</th>
             <th>Contact Number</th>
             <th>Bank Account Number</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -47,6 +63,9 @@ const UserProfiles = () => {
               <td>{profile.city}</td>
               <td>{profile.contactNumber}</td>
               <td>{profile.bankAccountNumber}</td>
+              <td>
+                <button onClick={() => handleDelete(profile.username)}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>

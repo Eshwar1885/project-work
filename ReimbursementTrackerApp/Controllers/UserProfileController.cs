@@ -61,7 +61,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// </summary>
         /// <param name="username">The username of the user profile to remove.</param>
         /// <returns>The result of the removal operation.</returns>
-        [Authorize(Roles = "Employee")]
+        [Authorize(Roles = "HR")]
         [HttpDelete("{username}")]
         public ActionResult RemoveUserProfile(string username)
         {

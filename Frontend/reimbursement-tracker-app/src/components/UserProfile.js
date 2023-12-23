@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UpdateProfile from "./UpdateProfile";
-import DeleteProfile from "./DeleteProfile";
+//import DeleteProfile from "./DeleteProfile";
 import './UserProfile.css';
 
 const UserProfile = ({ match }) => {
@@ -16,10 +16,7 @@ const UserProfile = ({ match }) => {
     });
 
     const [isEditing, setIsEditing] = useState(false);
-    const [isDeleting, setIsDeleting] = useState(false);
-
     const [updateResult, setUpdateResult] = useState(null);
-    const [deleteResult, setDeleteResult] = useState(null);
 
     useEffect(() => {
         const fetchUserProfile = async () => {
@@ -40,10 +37,6 @@ const UserProfile = ({ match }) => {
         setUpdateResult(null);
     };
 
-    const handleDeleteToggle = () => {
-        setIsDeleting(!isDeleting);
-        setDeleteResult(null);
-    };
 
     const handleUpdate = async (updatedProfile) => {
         try {
@@ -55,18 +48,6 @@ const UserProfile = ({ match }) => {
             console.error(error);
         }
     };
-
-    const handleDelete = async () => {
-        try {
-            const username = localStorage.getItem('username');
-            await axios.delete(`https://localhost:7007/api/UserProfile/${userProfile.username}`);
-            setDeleteResult({ success: true, message: "Profile deleted successfully." });
-        } catch (error) {
-            setDeleteResult({ success: false, message: "Error deleting profile. Please try again." });
-            console.error(error);
-        }
-    };
-
     return (
         <div className="userProfileContainer">
             <h2 className="userProfileHeader">User Profile</h2>
@@ -155,9 +136,6 @@ const UserProfile = ({ match }) => {
                             <button className="btn btn-primary button" onClick={handleEditToggle}>
                                 Update Profile
                             </button>
-                            <button className="btn btn-danger button ml-2" onClick={handleDeleteToggle}>
-                                Delete Profile
-                            </button>
                         </>
                     )}
                 </div>
@@ -165,20 +143,6 @@ const UserProfile = ({ match }) => {
                 {updateResult && (
                     <div className={`alert ${updateResult.success ? 'alert-success' : 'alert-danger'} mt-3`}>
                         {updateResult.message}
-                    </div>
-                )}
-
-                {isDeleting && (
-                    <DeleteProfile
-                        username={userProfile.username}
-                        onDelete={handleDelete}
-                        onCancel={handleDeleteToggle}
-                    />
-                )}
-
-                {deleteResult && (
-                    <div className={`alert ${deleteResult.success ? 'alert-success' : 'alert-danger'} mt-3`}>
-                        {deleteResult.message}
                     </div>
                 )}
             </div>

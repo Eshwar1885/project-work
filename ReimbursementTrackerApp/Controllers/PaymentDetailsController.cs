@@ -166,7 +166,7 @@ namespace ReimbursementTrackerApp.Controllers
         /// Gets all payment details.
         /// </summary>
         /// <returns>Returns a list of payment details DTOs if available; otherwise, returns an error message.</returns>
-        [Authorize(Roles ="HR")]
+        [Authorize(Roles = "HR")]
         [HttpGet]
         public IActionResult GetAllPaymentDetails()
         {
